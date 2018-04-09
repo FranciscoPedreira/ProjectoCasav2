@@ -17,42 +17,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome User</title>
 	</head>
-
-	<% 
-		if (request.getMethod().equalsIgnoreCase("POST")) {
-	        // The form has been submitted. Put code here.
-	        String username = request.getParameter("userName");
-   			String password = request.getParameter("passWord");
-   			System.out.println(username + " - " + password);
-   			application.setAttribute( "username", username);
-   			application.setAttribute( "password", password);
-   			
-   			SessionFactory sf = HibernateUtil.getSessionFactory();
-   	        Session sess = sf.openSession();
-   	        sess.beginTransaction();
-   	 
-   	        /*fetching objects from the database in hibernate*/
-   	 
-   	        Query queryUser = sess.createQuery("from User where username = :username");
-   	        queryUser.setParameter("username", username);
-   	        ArrayList<User> listUser = (ArrayList<User>) queryUser.list();
-   	        for(User u : listUser) {
-   	        	System.out.println(u.getUsername() + " - " + u.getPassword());
-   	        }
-   	        application.setAttribute("listUser", listUser);
-   	        
-   	     	System.out.println("########## EMPLOYEES ##########");
-   	        
-	   	    Query queryEmployee = sess.createQuery("from Employee");
-	        ArrayList<Employee> listEmployee = (ArrayList<Employee>) queryEmployee.list();
-	        for(Employee e : listEmployee) {
-	        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
-	        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
-	        }
-
-	        application.setAttribute("listEmployee", listEmployee);
-		}
-	%>
 	
 	<body>
 	<c:if test="${param.userName.equals(listUser.get(0).getUsername()) && param.passWord.equals(listUser.get(0).getPassword())}">
