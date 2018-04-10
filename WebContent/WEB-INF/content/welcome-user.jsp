@@ -19,26 +19,25 @@
 	</head>
 	
 	<body>
-	<c:if test="${param.userName.equals(listUser.get(0).getUsername()) && param.passWord.equals(listUser.get(0).getPassword())}">
 	
-		<% System.out.println("Rendering message..."); %>
+		<c:if test="${userName.equals(listUser.get(0).getUsername()) && passWord.equals(listUser.get(0).getPassword())}">
 		
-		<h1>${message}</h1>
+			<% System.out.println("Rendering message..."); %>
+			
+			<h1>${message}</h1>
+			
+			<c:forEach items="${listEmployee}" var="e"> 
+			  <tr>
+			    <td>${e.getId().getFirstName()}</td>
+			    <td>${e.getId().getLastName()}</td>
+			    <td>${e.getCountry()}</td>
+			    <td>${e.getAddress()}</td>
+			    <td>${e.getRole()}</td>
+			  </tr>
+			  <br />
+			</c:forEach>
 		
-		<c:forEach items="${listEmployee}" var="e"> 
-		  <tr>
-		    <td>${e.getId().getFirstName()}</td>
-		    <td>${e.getId().getLastName()}</td>
-		    <td>${e.getCountry()}</td>
-		    <td>${e.getAddress()}</td>
-		    <td>${e.getRole()}</td>
-		  </tr>
-		  <br />
-		</c:forEach>
-	
-	</c:if>
-	
-		
+		</c:if>
 	
 	</body>
 	

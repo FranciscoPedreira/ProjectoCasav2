@@ -19,6 +19,8 @@ public class WelcomeUserAction extends ActionSupport{
     private String userName;
     private String message;
     private String passWord;
+    private ArrayList<User> listUser;
+    private ArrayList<Employee> listEmployee;
     
     public String execute() {
             
@@ -34,7 +36,7 @@ public class WelcomeUserAction extends ActionSupport{
 
         Query queryUser = sess.createQuery("from User where username = :username");
         queryUser.setParameter("username", userName);
-        ArrayList<User> listUser = (ArrayList<User>) queryUser.list();
+        listUser = (ArrayList<User>) queryUser.list();
         for(User u : listUser) {
         	System.out.println(u.getUsername() + " - " + u.getPassword());
         }
@@ -42,7 +44,7 @@ public class WelcomeUserAction extends ActionSupport{
      	System.out.println("########## EMPLOYEES ##########");
         
    	    Query queryEmployee = sess.createQuery("from Employee");
-        ArrayList<Employee> listEmployee = (ArrayList<Employee>) queryEmployee.list();
+        listEmployee = (ArrayList<Employee>) queryEmployee.list();
         for(Employee e : listEmployee) {
         	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
@@ -58,7 +60,7 @@ public class WelcomeUserAction extends ActionSupport{
     	this.userName = userName;
     }
 
-    public void setPassword(String passWord) {
+    public void setPassWord(String passWord) {
     	this.passWord = passWord;
     }
     
@@ -66,16 +68,32 @@ public class WelcomeUserAction extends ActionSupport{
     	this.message = message;
     }
     
+    public void setListUser(ArrayList<User> listUser) {
+    	this.listUser = listUser;
+    }
+    
+    public void setListEmployee(ArrayList<Employee> listEmployee) {
+    	this.listEmployee = listEmployee;
+    }
+    
     public String getUserName() {
         return userName;
     }
     
-    public String getPassword() {
+    public String getPassWord() {
         return passWord;
 	}
 
     public String getMessage() {
     	return message;
+    }
+    
+    public ArrayList<User> getListUser() {
+    	return listUser;
+    }
+    
+    public ArrayList<Employee> getListEmployee() {
+    	return listEmployee;
     }
     
 }
