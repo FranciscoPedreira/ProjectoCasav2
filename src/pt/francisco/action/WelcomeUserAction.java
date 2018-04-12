@@ -2,6 +2,11 @@ package pt.francisco.action;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -12,7 +17,7 @@ import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.model.User;
 import pt.francisco.hibernate.util.HibernateUtil;
 
-public class WelcomeUserAction extends ActionSupport{
+public class WelcomeUserAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
 	public static final long serialVersionUID = 1L;
 
@@ -21,6 +26,8 @@ public class WelcomeUserAction extends ActionSupport{
     private String passWord;
     private ArrayList<User> listUser;
     private ArrayList<Employee> listEmployee;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
     
     public String execute() {
             
@@ -50,6 +57,9 @@ public class WelcomeUserAction extends ActionSupport{
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
             
+        
+        
+        
         System.out.println("End of welcome user action");
         
         return SUCCESS;
@@ -94,6 +104,22 @@ public class WelcomeUserAction extends ActionSupport{
     
     public ArrayList<Employee> getListEmployee() {
     	return listEmployee;
+    }
+    
+    public void setServletRequest(HttpServletRequest request){
+    	this.request = request;
+    }
+
+    public HttpServletRequest getServletRequest(){
+    	return request;
+    }
+
+    public void setServletResponse(HttpServletResponse response){
+    	this.response = response;
+    }
+
+    public HttpServletResponse getServletResponse(){
+    	return response;
     }
     
 }
