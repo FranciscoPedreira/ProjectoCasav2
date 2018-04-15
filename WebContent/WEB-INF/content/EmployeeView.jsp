@@ -14,8 +14,6 @@
 	
 	<h1>LISTA EMPREGADOS</h1>
 	
-	<h1>${testPostProcessVar}</h1>
-	
 	<c:forEach items="${listEmployee}" var="e"> 
 	  <tr>
 	    <td>${e.getId().getFirstName()}</td>

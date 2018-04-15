@@ -29,10 +29,8 @@ public class EmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   
-		HttpSession session = (HttpSession) request.getSession();
-    	request.setAttribute("listEmployee", session.getAttribute("listEmployee"));
-    	System.out.println("listEmployee = " + session.getAttribute("listEmployee"));
-    	request.setAttribute("testPostProcessVar", "I came from doPost!");
+    	//request.setAttribute("listEmployee", request.getAttribute("listEmployee"));
+    	System.out.println("EmployeeViewServlet: listEmployee = " + request.getAttribute("listEmployee"));
         request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         
     }

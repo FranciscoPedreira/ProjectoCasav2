@@ -20,9 +20,7 @@
 	
 	<body>
 		
-		<c:url var="url" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
-			
-		<a href = "<c:out value="${url}"/>">Listagem Empregados</a>
+		
 	
 		<c:if test="${userName.equals(listUser.get(0).getUsername()) && passWord.equals(listUser.get(0).getPassword())}">
 		
@@ -30,7 +28,12 @@
 			
 			<h1>${message}</h1>
 			
-			<c:forEach items="${listEmployee}" var="e"> 
+			<c:out value="${listEmployee}"/>
+			
+			<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
+			<a href = "<c:out value="${employeeListUrl}"/>">Listagem Empregados</a>
+			
+			<!-- <c:forEach items="${listEmployee}" var="e"> 
 			  <tr>
 			    <td>${e.getId().getFirstName()}</td>
 			    <td>${e.getId().getLastName()}</td>
@@ -39,14 +42,10 @@
 			    <td>${e.getRole()}</td>
 			  </tr>
 			  <br />
-			</c:forEach>
+			</c:forEach> -->
 		
 		</c:if>
-		
-		<h1><span style="background-color: #FFFFcc">Access Request and Response Example!</span></h1>
-  		<b>Request: </b>${listUser}<br>
-  		<b>Response: </b><%=response%><br>
-	
+
 	</body>
 	
 

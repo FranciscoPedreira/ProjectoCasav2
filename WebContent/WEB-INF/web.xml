@@ -30,5 +30,15 @@
         <servlet-name>employeeViewServlet</servlet-name>
         <url-pattern>/EmployeeView</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>WelcomeUserServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.WelcomeUserServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>WelcomeUserServlet</servlet-name>
+        <url-pattern>/welcome-user.action</url-pattern>
+    </servlet-mapping>
 	
 </web-app>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
@@ -56,6 +57,10 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
+        
+        //set the listEmployee variable in the request so the EmployeeView servlet can access it and send it to the view
+        request.setAttribute("listEmployee", listEmployee);
+        System.out.println("WelcomeUserAction - " + request.getAttribute("listEmployee"));
         
         System.out.println("End of welcome user action");
         
