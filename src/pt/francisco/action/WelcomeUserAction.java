@@ -56,9 +56,6 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
-            
-        
-        
         
         System.out.println("End of welcome user action");
         

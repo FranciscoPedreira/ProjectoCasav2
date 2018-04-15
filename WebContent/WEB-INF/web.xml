@@ -16,7 +16,19 @@
 
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/index.jsp</url-pattern>
+		<url-pattern>/welcome-user.jsp</url-pattern>
+		<url-pattern>/welcome-user.action</url-pattern>
 	</filter-mapping>
-
+	
+	<servlet>
+        <servlet-name>employeeViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.EmployeeViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>employeeViewServlet</servlet-name>
+        <url-pattern>/EmployeeView</url-pattern>
+    </servlet-mapping>
+	
 </web-app>

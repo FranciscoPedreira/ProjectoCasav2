@@ -20,9 +20,8 @@
 	
 	<body>
 		
-		<c:url var="url" context="/ProjectoCasa" scope="request" value="/EmployeeView">
-			<c:param name="listEmployee" value="%{listEmployee}" />
-		</c:url>
+		<c:url var="url" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
+			
 		<a href = "<c:out value="${url}"/>">Listagem Empregados</a>
 	
 		<c:if test="${userName.equals(listUser.get(0).getUsername()) && passWord.equals(listUser.get(0).getPassword())}">
