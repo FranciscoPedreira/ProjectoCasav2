@@ -58,9 +58,9 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
         
-        //set the listEmployee variable in the request so the EmployeeView servlet can access it and send it to the view
-        request.setAttribute("listEmployee", listEmployee);
-        System.out.println("WelcomeUserAction - " + request.getAttribute("listEmployee"));
+        //set the listEmployee variable in the session so it can be acessed in the EmployeeView
+        HttpSession session = request.getSession();
+        session.setAttribute("listEmployee", listEmployee);
         
         System.out.println("End of welcome user action");
         

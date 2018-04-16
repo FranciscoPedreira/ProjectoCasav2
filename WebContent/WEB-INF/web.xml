@@ -19,6 +19,7 @@
 		<url-pattern>/index.jsp</url-pattern>
 		<url-pattern>/welcome-user.jsp</url-pattern>
 		<url-pattern>/welcome-user.action</url-pattern>
+		<url-pattern>/EmployeeUpdateAction</url-pattern>
 	</filter-mapping>
 	
 	<servlet>
@@ -31,14 +32,4 @@
         <url-pattern>/EmployeeView</url-pattern>
     </servlet-mapping>
     
-    <servlet>
-        <servlet-name>WelcomeUserServlet</servlet-name>
-        <servlet-class>pt.francisco.servlet.WelcomeUserServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>WelcomeUserServlet</servlet-name>
-        <url-pattern>/welcome-user.action</url-pattern>
-    </servlet-mapping>
-	
 </web-app>

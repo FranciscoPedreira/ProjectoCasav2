@@ -28,21 +28,8 @@
 			
 			<h1>${message}</h1>
 			
-			<c:out value="${listEmployee}"/>
-			
 			<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
-			<a href = "<c:out value="${employeeListUrl}"/>">Listagem Empregados</a>
-			
-			<!-- <c:forEach items="${listEmployee}" var="e"> 
-			  <tr>
-			    <td>${e.getId().getFirstName()}</td>
-			    <td>${e.getId().getLastName()}</td>
-			    <td>${e.getCountry()}</td>
-			    <td>${e.getAddress()}</td>
-			    <td>${e.getRole()}</td>
-			  </tr>
-			  <br />
-			</c:forEach> -->
+			<a href = "<c:out value="${employeeListUrl}"/>">Employee List</a>
 		
 		</c:if>
 

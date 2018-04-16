@@ -12,17 +12,37 @@
 </head>
 <body>
 	
-	<h1>LISTA EMPREGADOS</h1>
+	<h1>Employee List</h1>
 	
 	<c:forEach items="${listEmployee}" var="e"> 
-	  <tr>
-	    <td>${e.getId().getFirstName()}</td>
-	    <td>${e.getId().getLastName()}</td>
-	    <td>${e.getCountry()}</td>
-	    <td>${e.getAddress()}</td>
-	    <td>${e.getRole()}</td>
-	  </tr>
-	  <br />
+	
+		<form action="EmployeeUpdateAction" method="post">
+			<table>
+				<tr>
+					<td><input type='text' name='firstName' value='${e.getId().getFirstName()}'></td>
+				</tr>
+				<tr>
+					<td><input type='text' name='lastName' value='${e.getId().getLastName()}'></td>
+				</tr>
+				<tr>
+					<td><input type='text' name='country' value='>${e.getCountry()}'></td>
+				</tr>
+				<tr>
+					<td><input type='text' name='address' value='${e.getAddress()}'></td>
+				</tr>
+				<tr>
+					<td><input type='text' name='role' value='${e.getRole()}'></td>
+				</tr>
+			</table>
+		 
+		 	<input type="submit" name="updateUser" value="Update User Info" />
+		    
+		 	<br />
+		 	<br />
+		 	<br />
+		 	
+	 	</form>
+	 	
 	</c:forEach>
 	
 </body>

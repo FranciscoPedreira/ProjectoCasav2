@@ -28,9 +28,7 @@ public class EmployeeViewServlet extends HttpServlet {
 	//Preprocess the request: since we don't want to do anything when the request comes in we just forward the client to the jsp
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-  
-    	//request.setAttribute("listEmployee", request.getAttribute("listEmployee"));
-    	System.out.println("EmployeeViewServlet: listEmployee = " + request.getAttribute("listEmployee"));
+		
         request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         
     }
