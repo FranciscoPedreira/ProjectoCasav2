@@ -19,8 +19,6 @@
 	</head>
 	
 	<body>
-		
-		
 	
 		<c:if test="${userName.equals(listUser.get(0).getUsername()) && passWord.equals(listUser.get(0).getPassword())}">
 		

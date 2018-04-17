@@ -3,6 +3,8 @@
  */
 package pt.francisco.hibernate.util;
 
+import org.hibernate.Session;
+
 /**
  * @author Francisco
  *
@@ -12,8 +14,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-
-	private static final SessionFactory sessionFactory = buildSessionFactory();
 	 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -27,7 +27,9 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
- 
+    
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+    
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }

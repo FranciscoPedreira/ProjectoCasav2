@@ -130,8 +130,7 @@ public class EmployeeUpdateAction extends ActionSupport implements ServletReques
     	e.setCountry((String) request.getAttribute("country"));
     	e.setRole((String) request.getAttribute("role"));
     	
-		SessionFactory sf = HibernateUtil.getSessionFactory();
-		Session session = sf.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		//creation and persistence of objects to the database in hibernate
