@@ -1,27 +1,18 @@
 package pt.francisco.action;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
-import pt.francisco.hibernate.model.User;
 import pt.francisco.hibernate.util.HibernateUtil;
 
-public class EmployeeUpdateAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
+public class EmployeeViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
 	private String firstName;
 	private String lastName;
@@ -136,7 +127,7 @@ public class EmployeeUpdateAction extends ActionSupport implements ServletReques
 		//creation and persistence of objects to the database in hibernate
 		  
 		System.out.println("Creating/Updating Employee: " + e.getId().getFirstName());
-		session.persist(e);
+		session.saveOrUpdate(e);
 		
 		session.getTransaction().commit();
 		session.close();
