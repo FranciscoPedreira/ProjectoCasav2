@@ -12,9 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.query.Query;
+
 import pt.francisco.hibernate.model.Employee;
 
 import javax.servlet.http.HttpServlet;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.User;
+import pt.francisco.hibernate.util.HibernateUtil;
 
 /**
  * @author Francisco
@@ -29,6 +43,7 @@ public class EmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("In doGet EmployeeViewServlet");
         request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         
     }
@@ -37,7 +52,25 @@ public class EmployeeViewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        final ArrayList<Employee> listEmployee;
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sess = sf.openSession();
+        sess.beginTransaction();
     	
+    	System.out.println("In doPost EmployeeViewServlet");
+    	Query queryEmployee = sess.createQuery("from Employee");
+        listEmployee = (ArrayList<Employee>) queryEmployee.list();
+        for(Employee e : listEmployee) {
+        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
+        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
+        }
+        
+        //set the listEmployee variable in the session so it can be acessed in the EmployeeView
+        HttpSession session = request.getSession();
+        session.setAttribute("listEmployee", listEmployee);
+        
+    	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         /*request.setAttribute("testPostProcessVar", "I came from doPost!");
         request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);*/
         

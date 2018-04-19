@@ -7,8 +7,8 @@
 	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
 	<package name="default" extends="struts-default" namespace="/">
 		<action name="EmployeeViewAction" class="pt.francisco.action.EmployeeViewAction">
-			<result name="success">/EmployeeView.jsp</result>
-			<result name="error">/ErrorTemplate.jsp</result>
+			<result name="success">/EmployeeView</result>
+			<result name="error">/ErrorTemplate</result>
 		</action>
 	</package>
 </struts>

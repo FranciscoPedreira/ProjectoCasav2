@@ -18,54 +18,63 @@ public class EmployeeViewForm extends ActionSupport {
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	/**
 	 * @param firstName the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
 		return lastName;
 	}
+	
 	/**
 	 * @param lastName the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
 	/**
 	 * @return the country
 	 */
 	public String getCountry() {
 		return country;
 	}
+	
 	/**
 	 * @param country the country to set
 	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
 	/**
 	 * @return the address
 	 */
 	public String getAddress() {
 		return address;
 	}
+	
 	/**
 	 * @param address the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	/**
 	 * @return the role
 	 */
 	public String getRole() {
 		return role;
 	}
+	
 	/**
 	 * @param role the role to set
 	 */

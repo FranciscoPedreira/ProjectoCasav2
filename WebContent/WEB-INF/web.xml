@@ -19,14 +19,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- <filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>/index.jsp</url-pattern>
-		<url-pattern>/welcome-user</url-pattern>
-		<url-pattern>/welcome-user.action</url-pattern>
-		<url-pattern>/EmployeeUpdateAction</url-pattern>
-	</filter-mapping> -->
-	
 	<servlet>
         <servlet-name>employeeViewServlet</servlet-name>
         <servlet-class>pt.francisco.servlet.EmployeeViewServlet</servlet-class>
