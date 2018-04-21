@@ -125,7 +125,7 @@ public class EmployeeViewAction extends ActionSupport implements ServletRequestA
 		session.beginTransaction();
 		
 		//creation and persistence of objects to the database in hibernate
-		  
+		
 		System.out.println("Creating/Updating Employee: " + e.getId().getFirstName());
 		session.saveOrUpdate(e);
 		
@@ -135,7 +135,5 @@ public class EmployeeViewAction extends ActionSupport implements ServletRequestA
 		return SUCCESS;
         
     }
-
-
 	
 }

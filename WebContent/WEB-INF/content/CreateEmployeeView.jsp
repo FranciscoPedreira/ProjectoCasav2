@@ -7,69 +7,56 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employee List</title>
+<title>Create Employee</title>
 <link rel="stylesheet" type="text/css" href="<s:url value='css/style.css' />">
 </head>
 <body>
 	
-	<h1>Employee List</h1>
-	
-	<c:url var="createEmployeeUrl" context="/ProjectoCasa" scope="request" value="/CreateEmployeeView"/>
-	<a href = "<c:out value="${createEmployeeUrl}"/>">Create new employee</a>
-	
-	<br/>
-	<br/>
-	
-	<c:forEach items="${listEmployee}" var="e"> 
+	<h1>Create A New Employee</h1>
 	
 		<form action="EmployeeViewAction" method="post">
 			<table>
 				<tr>
 					<td>
 						<label for="firstName">First name: </label>
-						<input type='text' name='firstName' disabled value='${e.getId().getFirstName()}'>
-					</td>
-					<td><input type='hidden' name='firstName' value='${e.getId().getFirstName()}'>
+						<input type='text' id='firstName' name='firstName'>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label for="lastName">Last name: </label>
-						<input type='text' name='lastName'  disabled value='${e.getId().getLastName()}'>
+						<input type='text' id='lastName' name='lastName'>
 					</td>
-					<td><input type='hidden' name='lastName' value='${e.getId().getLastName()}'></td>
 				</tr>
 				<tr>
 					<td>
 						<label for="country">Country: </label>
-						<input type='text' name='country' value='${e.getCountry()}'>
+						<input type='text' id='country' name='country'>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label for="address">Address: </label>
-						<input type='text' name='address' value='${e.getAddress()}'>
+						<input type='text' id='address' name='address'>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label for="role">Role: </label>
-						<input type='text' name='role' value='${e.getRole()}'>
+						<input type='text' id='role' name='role'>
 					</td>
 				</tr>
 			</table>
-		 
-		 	<br/>
+			
+			<br/>
 		 
 		 	<div id="labelSpace"></div>
-		 	<input type="submit" name="updateUser" value="Update Employee Info" />
+		 	<input type="submit" id="createEmployeeButton" name="updateUser" value="Create New Employee" />
 		    
 		 	<br />
 		 	<br />
 		 	
 	 	</form>
-	 	
-	</c:forEach>
-	
+
 </body>
 </html>

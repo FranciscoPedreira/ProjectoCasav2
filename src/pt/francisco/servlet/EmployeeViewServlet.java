@@ -71,8 +71,6 @@ public class EmployeeViewServlet extends HttpServlet {
         session.setAttribute("listEmployee", listEmployee);
         
     	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
-        /*request.setAttribute("testPostProcessVar", "I came from doPost!");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);*/
         
     }
 	
