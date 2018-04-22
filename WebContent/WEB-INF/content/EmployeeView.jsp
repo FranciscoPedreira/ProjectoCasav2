@@ -61,8 +61,9 @@
 		 
 		 	<br/>
 		 
-		 	<div id="labelSpace"></div>
-		 	<input type="submit" name="updateUser" value="Update Employee Info" />
+		 	<!-- <div id="labelSpace"></div>  -->
+		 	<s:submit id="labelSpace" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
+		 	<input type="submit" name="updateEmployee" value="Update Employee Info" />
 		    
 		 	<br />
 		 	<br />

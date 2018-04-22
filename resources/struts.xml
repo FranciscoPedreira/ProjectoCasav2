@@ -5,10 +5,18 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="false" />
 	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.mapper.action.prefix.enabled" value="true"/>
 	<package name="default" extends="struts-default" namespace="/">
+		
 		<action name="EmployeeViewAction" class="pt.francisco.action.EmployeeViewAction">
 			<result name="success">/EmployeeView</result>
 			<result name="error">/ErrorTemplate</result>
 		</action>
+		
+		<action name="EmployeeDeleteAction" class="pt.francisco.action.EmployeeDeleteAction"> 
+    		<result name="success">/EmployeeView</result>
+    		<result name="error">/ErrorTemplate</result>
+		</action>
+		
 	</package>
 </struts>

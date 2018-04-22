@@ -1,7 +1,5 @@
 package pt.francisco.action;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.util.HibernateUtil;
 
-public class EmployeeViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
-	
+public class EmployeeDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
+
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -114,22 +112,23 @@ public class EmployeeViewAction extends ActionSupport implements ServletRequestA
 
     public String execute() {
         
-    	Employee e = new Employee();
+    	/*Employee e = new Employee();
     	Employee.EmployeeId eId = new Employee.EmployeeId();
     	eId.setFirstName((String) request.getAttribute("firstName"));
     	eId.setLastName((String) request.getAttribute("lastName"));
     	e.setId(eId);
     	e.setAddress((String) request.getAttribute("address"));
     	e.setCountry((String) request.getAttribute("country"));
-    	e.setRole((String) request.getAttribute("role"));
+    	e.setRole((String) request.getAttribute("role"));*/
     	
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		//creation and persistence of objects to the database in hibernate
-		
-		System.out.println("Creating/Updating Employee: " + e.getId().getFirstName());
-		session.saveOrUpdate(e);
+		//deletion of object from the database in hibernate
+		Employee.EmployeeId eIdAux = new Employee.EmployeeId((String) request.getAttribute("firstName"), (String) request.getAttribute("lastName"));
+		Employee e = session.load(Employee.class, eIdAux);
+		System.out.println("Deleting Employee: " + (String) request.getAttribute("firstName") + " " + (String) request.getAttribute("lastName"));
+		session.delete(e);
 		
 		session.getTransaction().commit();
 		session.close();

@@ -7,6 +7,6 @@
 <title>Action Error</title>
 </head>
 <body>
-	<h1>ACTION RETURNED ERROR!</h1>
+	<h1>SOMETHING WENT WRONG!</h1>
 </body>
 </html>
