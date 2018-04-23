@@ -5,11 +5,20 @@ label {
 }
 
 #labelSpace{	
-	display: inline-block;
-	width: 171px;
+	/*display: inline-block;*/
+	width: 100px;
 }
 
 #createEmployeeButton{
 	display: inline-block;
 	align: right;
+}
+
+#employeeActions{
+	white-space: normal;
+}
+
+#employeeActionButton{
+	vertical-align: center;
+	width: 50%;
 }

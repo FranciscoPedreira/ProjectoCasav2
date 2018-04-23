@@ -61,9 +61,19 @@
 		 
 		 	<br/>
 		 
-		 	<!-- <div id="labelSpace"></div>  -->
-		 	<s:submit id="labelSpace" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
-		 	<input type="submit" name="updateEmployee" value="Update Employee Info" />
+		 	<table>
+		 		<tr>
+		 			<td id="labelSpace"></td>
+				    <td id="employeeActionButton" >
+				        <s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
+				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/>
+				    </td>
+				 </tr>
+		 	</table>
+		 	  
+		 	<!-- <s:submit id="labelSpace" action="EmployeeDeleteAction" key="button.deleteEmployee"/> -->
+		 	<!-- <s:submit id="labelSpace" action="EmployeeViewAction" key="button.updateEmployee"/> -->
+		 	<!-- <input type="submit" name="updateEmployee" value="Update Employee Info" /> -->
 		    
 		 	<br />
 		 	<br />
