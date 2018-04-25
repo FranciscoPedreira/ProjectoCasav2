@@ -25,9 +25,23 @@
 			<% System.out.println("Rendering message..."); %>
 			
 			<h1>${message}</h1>
+			<table>
 			
-			<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
-			<a href = "<c:out value="${employeeListUrl}"/>">Employee List</a>
+				<tr>
+					<td>
+						<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
+						<a href = "<c:out value="${employeeListUrl}"/>">Employee List</a>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<c:url var="salaryListUrl" context="/ProjectoCasa" scope="request" value="/SalaryView"/>
+						<a href = "<c:out value="${salaryListUrl}"/>">Company Salary List</a>	
+					</td>
+				</tr>
+				
+			</table>
 		
 		</c:if>
 

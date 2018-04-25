@@ -14,11 +14,7 @@ label {
 	align: right;
 }
 
-#employeeActions{
-	white-space: normal;
-}
-
-#employeeActionButton{
+#actionButton{
 	vertical-align: center;
 	width: 50%;
 }

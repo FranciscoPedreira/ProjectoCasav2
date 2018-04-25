@@ -15,6 +15,7 @@ import org.hibernate.query.Query;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.Salary;
 import pt.francisco.hibernate.model.User;
 import pt.francisco.hibernate.util.HibernateUtil;
 
@@ -27,6 +28,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
     private String passWord;
     private ArrayList<User> listUser;
     private ArrayList<Employee> listEmployee;
+    private ArrayList<Salary> listSalary;
     private HttpServletRequest request;
     private HttpServletResponse response;
     
@@ -61,6 +63,20 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         //set the listEmployee variable in the session so it can be acessed in the EmployeeView
         HttpSession session = request.getSession();
         session.setAttribute("listEmployee", listEmployee);
+        
+        System.out.println("########## SALARY ##########");
+        
+   	    Query querySalary = sess.createQuery("from Salary");
+        listSalary = (ArrayList<Salary>) querySalary.list();
+        for(Salary s : listSalary) {
+        	System.out.println(s.getId().getFirstName() + " - " + s.getId().getLastName() + " - "
+        	+ s.getStep() + " - " + s.getValue());
+        }
+        
+        //set the listSalary variable in the session so it can be acessed in the SalaryView
+        session = request.getSession();
+        session.setAttribute("listSalary", listSalary);
+        
         
         System.out.println("End of welcome user action");
         

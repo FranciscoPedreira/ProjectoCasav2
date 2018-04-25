@@ -18,5 +18,6 @@
         <!-- add classes to map from here -->
         <mapping class="pt.francisco.hibernate.model.User" />
         <mapping class="pt.francisco.hibernate.model.Employee" />
+        <mapping class="pt.francisco.hibernate.model.Salary" />
     </session-factory>
 </hibernate-configuration>

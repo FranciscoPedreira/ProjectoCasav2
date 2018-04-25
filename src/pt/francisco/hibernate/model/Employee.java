@@ -43,22 +43,23 @@ public class Employee {
 	    	this.lastName = lastName;
 	    }
 	    
-	    public String getFirstName() {
-	    	return firstName;
-	    }
-	    
-	    public String getLastName() {
-	    	return lastName;
-	    }
-	    
 	    public void setFirstName(String firstname) {
 	    	this.firstName = firstname;
 	    }
+	    
+	    public String getFirstName() {
+	    	return firstName;
+	    }
+
 	    
 	    public void setLastName(String lastName) {
 	    	this.lastName = lastName;
 	    }
 	    
+	    
+	    public String getLastName() {
+	    	return lastName;
+	    }
 	    
 	}
 	
