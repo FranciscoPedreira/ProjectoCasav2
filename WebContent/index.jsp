@@ -8,7 +8,7 @@
         <title>Hello World</title>
     </head>
     <body>
-        <s:form action="welcome-user">
+        <s:form action="welcomeUserAction">
             <s:textfield name="userName" label="User Name" />
             <s:password name="passWord" label="Password" />
             <s:submit type="button">

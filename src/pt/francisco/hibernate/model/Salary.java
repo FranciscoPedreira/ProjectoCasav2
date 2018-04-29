@@ -35,11 +35,11 @@ public class Salary {
 		 
 		public SalaryId(){}
 	    
-		@ManyToOne
+		//@ManyToOne
 		@JoinColumn(name = "firstname")
 		private String firstName;
 
-		@ManyToOne
+		//@ManyToOne
 	    @JoinColumn(name = "lastname")
 	    private String lastName;
 	    
@@ -69,7 +69,6 @@ public class Salary {
 	
 	@EmbeddedId
 	SalaryId id;
-	
 	
 	/**
 	 * @return the step

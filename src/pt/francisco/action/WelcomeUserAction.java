@@ -32,7 +32,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
     private HttpServletRequest request;
     private HttpServletResponse response;
     
-    public String execute() {
+	public String execute() {
             
     	message = "Welcome " + userName;
             
@@ -43,13 +43,14 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         sess.beginTransaction();
  
         /*fetching objects from the database in hibernate*/
-
+        
         Query queryUser = sess.createQuery("from User where username = :username");
         queryUser.setParameter("username", userName);
         listUser = (ArrayList<User>) queryUser.list();
         for(User u : listUser) {
         	System.out.println(u.getUsername() + " - " + u.getPassword());
         }
+        
         
      	System.out.println("########## EMPLOYEES ##########");
         
@@ -79,6 +80,10 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         
         
         System.out.println("End of welcome user action");
+        
+        
+        sess.getTransaction().commit();
+        sess.close();
         
         return SUCCESS;
         

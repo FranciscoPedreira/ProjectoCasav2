@@ -11,27 +11,33 @@ import org.hibernate.Session;
  */
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.BootstrapServiceRegistry;
+import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
-	 
-    private static SessionFactory buildSessionFactory() {
-        try {
-        	
-            // Create the SessionFactory from hibernate.cfg.xml
-        	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-            return sessionFactory;
-            
-        } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-    
-    private static final SessionFactory sessionFactory = buildSessionFactory();
-    
+
     public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+        return buildSessionFactory();
+    }
+
+    private static SessionFactory buildSessionFactory() {
+
+        final StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
+        return new MetadataSources(serviceRegistry).buildMetadata().buildSessionFactory();
+    }
+
+    public static Session getSession() {
+        Session hibernateSession = getSessionFactory().getCurrentSession();
+        return hibernateSession;
+    }
+
+    public static void shutdown() {
+        getSessionFactory().close();
     }
 	
 }

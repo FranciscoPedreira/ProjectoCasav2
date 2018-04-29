@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
-import org.hibernate.Session;
+//import org.hibernate.Session;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import pt.francisco.hibernate.model.Salary;
-import pt.francisco.hibernate.util.HibernateUtil;
+//import pt.francisco.hibernate.model.Salary;
+//import pt.francisco.hibernate.util.HibernateUtil;
 
 public class SalaryViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
@@ -97,7 +97,7 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 
     public String execute() {
         
-    	Salary s = new Salary();
+    	/*Salary s = new Salary();
     	Salary.SalaryId sId = new Salary.SalaryId();
     	sId.setFirstName((String) request.getAttribute("firstName"));
     	sId.setLastName((String) request.getAttribute("lastName"));
@@ -114,7 +114,7 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 		session.saveOrUpdate(s);
 		
 		session.getTransaction().commit();
-		session.close();
+		session.close();*/
     	
 		return SUCCESS;
         

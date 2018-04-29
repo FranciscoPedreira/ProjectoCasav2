@@ -44,7 +44,7 @@ public class EmployeeViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("In doGet EmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+        request.getRequestDispatcher("/WebContent/content/EmployeeView.jsp").forward(request, response);
         
     }
 
@@ -66,11 +66,12 @@ public class EmployeeViewServlet extends HttpServlet {
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
         
-        //set the listEmployee variable in the session so it can be acessed in the EmployeeView
+        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
+        //in the session so it can be acessed in the EmployeeView
         HttpSession session = request.getSession();
         session.setAttribute("listEmployee", listEmployee);
         
-    	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WebContent/content/EmployeeView.jsp").forward(request, response);
         
     }
 	

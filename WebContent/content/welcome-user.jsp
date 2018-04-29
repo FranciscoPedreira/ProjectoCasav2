@@ -29,14 +29,14 @@
 			
 				<tr>
 					<td>
-						<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/EmployeeView"/>
+						<c:url var="employeeListUrl" context="/ProjectoCasa" scope="request" value="/content/EmployeeView.jsp"/>
 						<a href = "<c:out value="${employeeListUrl}"/>">Employee List</a>
 					</td>
 				</tr>
 				
 				<tr>
 					<td>
-						<c:url var="salaryListUrl" context="/ProjectoCasa" scope="request" value="/SalaryView"/>
+						<c:url var="salaryListUrl" context="/ProjectoCasa" scope="request" value="/content/SalaryView.jsp"/>
 						<a href = "<c:out value="${salaryListUrl}"/>">Company Salary List</a>	
 					</td>
 				</tr>

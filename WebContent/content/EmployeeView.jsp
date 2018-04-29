@@ -66,7 +66,7 @@
 		 			<td id="labelSpace"></td>
 				    <td id="employeeActionButton" >
 				        <s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
-				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/>
+				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee" method="post"/>
 				    </td>
 				 </tr>
 		 	</table>
