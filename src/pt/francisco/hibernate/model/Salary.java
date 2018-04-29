@@ -19,8 +19,6 @@ import javax.persistence.Table;
 @Table(name = "salary")
 public class Salary {
 	
-	String firstname;
-	String lastname;
 	String step;
 	String value;
 	

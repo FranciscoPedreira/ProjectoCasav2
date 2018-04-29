@@ -14,7 +14,7 @@
 	
 	<h1>Employee List</h1>
 	
-	<c:url var="createEmployeeUrl" context="/ProjectoCasa" scope="request" value="/CreateEmployeeView"/>
+	<c:url var="createEmployeeUrl" context="/ProjectoCasa" scope="request" value="/content/CreateEmployeeView.jsp"/>
 	<a href = "<c:out value="${createEmployeeUrl}"/>">Create new employee</a>
 	
 	<br/>
@@ -66,7 +66,7 @@
 		 			<td id="labelSpace"></td>
 				    <td id="employeeActionButton" >
 				        <s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
-				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee" method="post"/>
+				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/>
 				    </td>
 				 </tr>
 		 	</table>

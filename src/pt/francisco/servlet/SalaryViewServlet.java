@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.query.Query;
 
 import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.Salary;
 
 import javax.servlet.http.HttpServlet;
 
@@ -35,7 +36,7 @@ import pt.francisco.hibernate.util.HibernateUtil;
  *
  */
 
-public class EmployeeViewServlet extends HttpServlet {
+public class SalaryViewServlet extends HttpServlet {
 
 	public static final long serialVersionUID = 2L;
 	
@@ -43,8 +44,8 @@ public class EmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In doGet EmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+		System.out.println("In doGet SalaryViewServlet");
+        request.getRequestDispatcher("/WEB-INF/content/SalaryView.jsp").forward(request, response);
         
     }
 
@@ -52,26 +53,26 @@ public class EmployeeViewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        final ArrayList<Employee> listEmployee;
+        final ArrayList<Salary> listSalary;
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sess = sf.openSession();
         sess.beginTransaction();
     	
-    	System.out.println("In doPost EmployeeViewServlet");
-    	Query queryEmployee = sess.createQuery("from Employee");
-        listEmployee = (ArrayList<Employee>) queryEmployee.list();
-        for(Employee e : listEmployee) {
-        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
-        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
+    	System.out.println("In doPost SalaryViewServlet");
+    	Query querySalary = sess.createQuery("from Salary");
+        listSalary = (ArrayList<Salary>) querySalary.list();
+        for(Salary s : listSalary) {
+        	System.out.println(s.getId().getFirstName() + " - " + s.getId().getLastName() + " - "
+        	+ s.getStep() + " - " + s.getValue());
         }
         
-        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the session so it can be acessed in the EmployeeView
+        //set the listSalary variable with the updated query values (the user just created or updated a Salary)
+        //in the session so it can be acessed in the SalaryView
         HttpSession session = request.getSession();
-        session.setAttribute("listEmployee", listEmployee);
+        session.setAttribute("listSalary", listSalary);
         
-    	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WEB-INF/content/SalaryView.jsp").forward(request, response);
         
     }
 	

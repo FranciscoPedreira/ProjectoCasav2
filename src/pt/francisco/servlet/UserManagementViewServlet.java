@@ -35,7 +35,7 @@ import pt.francisco.hibernate.util.HibernateUtil;
  *
  */
 
-public class EmployeeViewServlet extends HttpServlet {
+public class UserManagementViewServlet extends HttpServlet {
 
 	public static final long serialVersionUID = 2L;
 	
@@ -43,8 +43,8 @@ public class EmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In doGet EmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+		System.out.println("In doGet UserManagementViewServlet");
+        request.getRequestDispatcher("/WEB-INF/content/UserManagementView.jsp").forward(request, response);
         
     }
 
@@ -52,26 +52,25 @@ public class EmployeeViewServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        final ArrayList<Employee> listEmployee;
+        final ArrayList<User> listUsers;
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sess = sf.openSession();
         sess.beginTransaction();
     	
-    	System.out.println("In doPost EmployeeViewServlet");
-    	Query queryEmployee = sess.createQuery("from Employee");
-        listEmployee = (ArrayList<Employee>) queryEmployee.list();
-        for(Employee e : listEmployee) {
-        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
-        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
+    	System.out.println("In doPost UserManagementViewServlet");
+    	Query queryUsers = sess.createQuery("from User");
+        listUsers = (ArrayList<User>) queryUsers.list();
+        for(User u : listUsers) {
+        	System.out.println(u.getUsername() + " - " + u.getPassword());
         }
         
-        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the session so it can be acessed in the EmployeeView
+        //set the listUser variable with the updated query values (the admin just created or updated a user)
+        //in the session so it can be acessed in the UserManagementView
         HttpSession session = request.getSession();
-        session.setAttribute("listEmployee", listEmployee);
+        session.setAttribute("listUsers", listUsers);
         
-    	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+    	request.getRequestDispatcher("/WEB-INF/content/UserManagementView.jsp").forward(request, response);
         
     }
 	

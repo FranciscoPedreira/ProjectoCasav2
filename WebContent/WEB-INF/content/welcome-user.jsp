@@ -20,7 +20,7 @@
 	
 	<body>
 	
-		<c:if test="${userName.equals(listUser.get(0).getUsername()) && passWord.equals(listUser.get(0).getPassword())}">
+		<c:if test="${userName.equals(currentLoggedOnUser.get(0).getUsername()) && passWord.equals(currentLoggedOnUser.get(0).getPassword())}">
 		
 			<% System.out.println("Rendering message..."); %>
 			
@@ -40,6 +40,17 @@
 						<a href = "<c:out value="${salaryListUrl}"/>">Company Salary List</a>	
 					</td>
 				</tr>
+				
+				<c:if test="${userName.equals('admin')}">
+				
+					<tr>
+						<td>
+							<c:url var="userManagementUrl" context="/ProjectoCasa" scope="request" value="/content/UserManagementView.jsp"/>
+							<a href = "<c:out value="${userManagementUrl}"/>">User Management</a>	
+						</td>
+					</tr>
+					
+				</c:if>
 				
 			</table>
 		

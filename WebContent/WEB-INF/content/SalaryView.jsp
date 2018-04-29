@@ -14,8 +14,8 @@
 
 	<h1>Company Salary List</h1>
 	
-	<c:url var="createSalaryUrl" context="/ProjectoCasa" scope="request" value="/CreateSalaryiew"/>
-	<a href = "<c:out value="${createSalaryUrl}"/>">Create new salary registry</a>
+	<c:url var="createSalaryUrl" context="/ProjectoCasa" scope="request" value="/content/CreateSalaryView.jsp"/>
+	<a href = "<c:out value="${createSalaryUrl}"/>">Create new salary record</a>
 	
 	<br/>
 	<br/>

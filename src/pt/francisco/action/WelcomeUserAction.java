@@ -26,7 +26,8 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
     private String userName;
     private String message;
     private String passWord;
-    private ArrayList<User> listUser;
+    private ArrayList<User> listUsers;
+    private ArrayList<User> currentLoggedOnUser;
     private ArrayList<Employee> listEmployee;
     private ArrayList<Salary> listSalary;
     private HttpServletRequest request;
@@ -44,13 +45,26 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
  
         /*fetching objects from the database in hibernate*/
         
-        Query queryUser = sess.createQuery("from User where username = :username");
-        queryUser.setParameter("username", userName);
-        listUser = (ArrayList<User>) queryUser.list();
-        for(User u : listUser) {
+        Query queryLoggedOnUser = sess.createQuery("from User where username = :username");
+        queryLoggedOnUser.setParameter("username", userName);
+        currentLoggedOnUser = (ArrayList<User>) queryLoggedOnUser.list();
+        for(User u : currentLoggedOnUser) {
         	System.out.println(u.getUsername() + " - " + u.getPassword());
         }
         
+        //set the currentLoggedOnUser variable in the session so it can be acessed in welcome-user.jsp
+        HttpSession session = request.getSession();
+        session.setAttribute("currentLoggedOnUser", currentLoggedOnUser);
+        
+        Query queryUsers = sess.createQuery("from User");
+        listUsers = (ArrayList<User>) queryUsers.list();
+        for(User u : listUsers) {
+        	System.out.println(u.getUsername() + " - " + u.getPassword());
+        }
+        
+        //set the listUser variable in the session so it can be acessed in the UserManagementView
+        session = request.getSession();
+        session.setAttribute("listUsers", listUsers);
         
      	System.out.println("########## EMPLOYEES ##########");
         
@@ -62,7 +76,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listEmployee variable in the session so it can be acessed in the EmployeeView
-        HttpSession session = request.getSession();
+        session = request.getSession();
         session.setAttribute("listEmployee", listEmployee);
         
         System.out.println("########## SALARY ##########");
@@ -101,12 +115,16 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
     	this.message = message;
     }
     
-    public void setListUser(ArrayList<User> listUser) {
-    	this.listUser = listUser;
+    public void setListUsers(ArrayList<User> listUsers) {
+    	this.listUsers = listUsers;
     }
     
     public void setListEmployee(ArrayList<Employee> listEmployee) {
     	this.listEmployee = listEmployee;
+    }
+    
+    public void setCurrentLoggedOnUser(ArrayList<User> currentLoggedOnUser) {
+    	this.currentLoggedOnUser = currentLoggedOnUser;
     }
     
     public String getUserName() {
@@ -121,13 +139,19 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
     	return message;
     }
     
-    public ArrayList<User> getListUser() {
-    	return listUser;
+    public ArrayList<User> getListUsers() {
+    	return listUsers;
     }
     
     public ArrayList<Employee> getListEmployee() {
     	return listEmployee;
     }
+    
+    public ArrayList<User> getCurrentLoggedOnUser() {
+    	return currentLoggedOnUser;
+    }
+    
+    
     
     public void setServletRequest(HttpServletRequest request){
     	this.request = request;

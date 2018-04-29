@@ -10,8 +10,8 @@
 	<package name="default" extends="struts-default" namespace="/">
 		
 		<action name="welcomeUserAction" class="pt.francisco.action.WelcomeUserAction">
-			<result name="success">/content/welcome-user.jsp</result>
-			<result name="error">/content/ErrorTemplate.jsp</result>
+			<result name="success">/WEB-INF/content/welcome-user.jsp</result>
+			<result name="error">/WEB-INF/content/ErrorTemplate.jsp</result>
 		</action>
 		
 		
@@ -22,6 +22,27 @@
 		
 		<action name="EmployeeDeleteAction" class="pt.francisco.action.EmployeeDeleteAction"> 
     		<result name="success">/content/EmployeeView.jsp</result>
+    		<result name="error">/content/ErrorTemplate.jsp</result>
+		</action>
+		
+		
+		<action name="SalaryViewAction" class="pt.francisco.action.SalaryViewAction">
+			<result name="success">/content/SalaryView.jsp</result>
+			<result name="error">/content/ErrorTemplate.jsp</result>
+		</action>
+		
+		<action name="SalaryDeleteAction" class="pt.francisco.action.SalaryDeleteAction"> 
+    		<result name="success">/content/SalaryView.jsp</result>
+    		<result name="error">/content/ErrorTemplate.jsp</result>
+		</action>
+		
+		<action name="UserManagementViewAction" class="pt.francisco.action.UserManagementViewAction">
+			<result name="success">/content/UserManagementView.jsp</result>
+			<result name="error">/content/ErrorTemplate.jsp</result>
+		</action>
+		
+		<action name="UserManagementDeleteAction" class="pt.francisco.action.UserManagementDeleteAction"> 
+    		<result name="success">/content/UserManagementView.jsp</result>
     		<result name="error">/content/ErrorTemplate.jsp</result>
 		</action>
 		

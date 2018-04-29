@@ -32,7 +32,56 @@ version="3.0">
         <servlet-name>employeeViewServlet</servlet-name>
         <url-pattern>/content/EmployeeView.jsp</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>createEmployeeViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.CreateEmployeeViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>createEmployeeViewServlet</servlet-name>
+        <url-pattern>/content/CreateEmployeeView.jsp</url-pattern>
+    </servlet-mapping>
 
+	<servlet>
+        <servlet-name>salaryViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.SalaryViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>salaryViewServlet</servlet-name>
+        <url-pattern>/content/SalaryView.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>createSalaryViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.CreateSalaryViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>createSalaryViewServlet</servlet-name>
+        <url-pattern>/content/CreateSalaryView.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>userManagementViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.UserManagementViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>userManagementViewServlet</servlet-name>
+        <url-pattern>/content/UserManagementView.jsp</url-pattern>
+    </servlet-mapping>
+    
+      <servlet>
+        <servlet-name>createUserViewServlet</servlet-name>
+        <servlet-class>pt.francisco.servlet.CreateUserViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>createUserViewServlet</servlet-name>
+        <url-pattern>/content/CreateUserView.jsp</url-pattern>
+    </servlet-mapping>
     
     
 </web-app>

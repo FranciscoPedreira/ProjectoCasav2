@@ -10,15 +10,15 @@ import org.hibernate.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.Salary;
 import pt.francisco.hibernate.util.HibernateUtil;
 
-public class EmployeeDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
+public class SalaryDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
 	private String firstName;
 	private String lastName;
-	private String address;
-	private String country;
-	private String role;
+	private String step;
+	private String value;
     private HttpServletRequest request;
     private HttpServletResponse response;
 	
@@ -50,49 +50,35 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 		this.lastName = lastName;
 	}
 
-	/**
-	 * @return the address
+    /**
+	 * @return the step
 	 */
-	public String getAddress() {
-		return address;
+	public String getStep() {
+		return step;
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param step the step to set
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setStep(String step) {
+		this.step = step;
 	}
 
 	/**
-	 * @return the country
+	 * @return the value
 	 */
-	public String getCountry() {
-		return country;
+	public String getValue() {
+		return value;
 	}
 
 	/**
-	 * @param country the country to set
+	 * @param value the value to set
 	 */
-	public void setCountry(String country) {
-		this.country = country;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	/**
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
-
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-    public void setServletRequest(HttpServletRequest request){
+	public void setServletRequest(HttpServletRequest request){
     	this.request = request;
     }
 
@@ -116,10 +102,10 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 		session.beginTransaction();
 		
 		//deletion of object from the database in hibernate
-		Employee.EmployeeId eIdAux = new Employee.EmployeeId((String) request.getAttribute("firstName"), (String) request.getAttribute("lastName"));
-		Employee e = session.load(Employee.class, eIdAux);
-		System.out.println("Deleting Employee: " + (String) request.getAttribute("firstName") + " " + (String) request.getAttribute("lastName"));
-		session.delete(e);
+		Salary.SalaryId sIdAux = new Salary.SalaryId((String) request.getAttribute("firstName"), (String) request.getAttribute("lastName"));
+		Salary s = session.load(Salary.class, sIdAux);
+		System.out.println("Deleting Salary Registry of Employee: " + (String) request.getAttribute("firstName") + " " + (String) request.getAttribute("lastName"));
+		session.delete(s);
 		
 		session.getTransaction().commit();
 		session.close();

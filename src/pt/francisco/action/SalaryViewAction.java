@@ -6,8 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 //import org.hibernate.Session;
+import org.hibernate.Session;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import pt.francisco.hibernate.model.Salary;
+import pt.francisco.hibernate.util.HibernateUtil;
 
 //import pt.francisco.hibernate.model.Salary;
 //import pt.francisco.hibernate.util.HibernateUtil;
@@ -73,7 +77,7 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 	/**
 	 * @param value the value to set
 	 */
-	public void setCountry(String value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	
@@ -97,7 +101,7 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 
     public String execute() {
         
-    	/*Salary s = new Salary();
+    	Salary s = new Salary();
     	Salary.SalaryId sId = new Salary.SalaryId();
     	sId.setFirstName((String) request.getAttribute("firstName"));
     	sId.setLastName((String) request.getAttribute("lastName"));
@@ -110,11 +114,12 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 		
 		//creation and persistence of objects to the database in hibernate
 		
-		System.out.println("Creating/Updating Salary Register from Employee: " + s.getId().getFirstName());
+		System.out.println("Creating/Updating Salary Register from Employee: " + s.getId().getFirstName()
+				+ " - " + s.getId().getLastName() + " - " + s.getStep() + " - " + s.getValue());
 		session.saveOrUpdate(s);
 		
 		session.getTransaction().commit();
-		session.close();*/
+		session.close();
     	
 		return SUCCESS;
         
