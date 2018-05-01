@@ -71,7 +71,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
    	    Query queryEmployee = sess.createQuery("from Employee");
         listEmployee = (ArrayList<Employee>) queryEmployee.list();
         for(Employee e : listEmployee) {
-        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
+        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
         
@@ -84,7 +84,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
    	    Query querySalary = sess.createQuery("from Salary");
         listSalary = (ArrayList<Salary>) querySalary.list();
         for(Salary s : listSalary) {
-        	System.out.println(s.getId().getFirstName() + " - " + s.getId().getLastName() + " - "
+        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
         	+ s.getStep() + " - " + s.getValue());
         }
         

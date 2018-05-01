@@ -10,10 +10,12 @@ import org.hibernate.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.Salary;
 import pt.francisco.hibernate.util.HibernateUtil;
 
 public class EmployeeDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
+	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -92,6 +94,20 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 		this.role = role;
 	}
 	
+	/**
+	 * @return the employeeId
+	 */
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	/**
+	 * @param employeeId the employeeId to set
+	 */
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	
     public void setServletRequest(HttpServletRequest request){
     	this.request = request;
     }
@@ -116,9 +132,9 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 		session.beginTransaction();
 		
 		//deletion of object from the database in hibernate
-		Employee.EmployeeId eIdAux = new Employee.EmployeeId((String) request.getAttribute("firstName"), (String) request.getAttribute("lastName"));
-		Employee e = session.load(Employee.class, eIdAux);
-		System.out.println("Deleting Employee: " + (String) request.getAttribute("firstName") + " " + (String) request.getAttribute("lastName"));
+		//we get the id from a hidden field in the form so hibernate knows which employee to delete
+		Employee e = session.load(Employee.class, (int) request.getAttribute("employeeId"));
+		System.out.println("Deleting Employee with Id: " + (int) request.getAttribute("employeeId") + " - " + (String) request.getAttribute("firstName") + " - " + (String) request.getAttribute("lastName"));
 		session.delete(e);
 		
 		session.getTransaction().commit();

@@ -11,12 +11,18 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 	
+	Integer employeeId;
+    String firstName;
+    String lastName;
 	String role;
 	String address;
 	String country;
@@ -25,48 +31,55 @@ public class Employee {
 		
 	}
 	
-	@Embeddable
-	public static class EmployeeId implements Serializable { 
-		
-		public static final long serialVersionUID = 1L;
-		
-		public EmployeeId(){}
-	    
-		@Column(name = "firstname")
-	    private String firstName;
 
-	    @Column(name = "lastname")
-	    private String lastName;
-	    
-	    public EmployeeId(String firstName, String lastName) {
-	    	this.firstName = firstName;
-	    	this.lastName = lastName;
-	    }
-	    
-	    public void setFirstName(String firstname) {
-	    	this.firstName = firstname;
-	    }
-	    
-	    public String getFirstName() {
-	    	return firstName;
-	    }
-
-	    
-	    public void setLastName(String lastName) {
-	    	this.lastName = lastName;
-	    }
-	    
-	    
-	    public String getLastName() {
-	    	return lastName;
-	    }
-	    
+	/**
+	 * @return the employeeId
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "employeeId")
+	public Integer getEmployeeId() {
+		return employeeId;
 	}
+
+
+	/**
+	 * @param employeeId the employeeId to set
+	 */
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
+	}
+
 	
+    /**
+	 * @return the firstname
+	 */
+    @Column(name = "firstname")
+    public String getFirstName() {
+    	return firstName;
+    }
 	
-	@EmbeddedId
-	EmployeeId id;
-	
+	/**
+	 * @param firstName the firstName to set
+	 */
+    public void setFirstName(String firstname) {
+    	this.firstName = firstname;
+    }
+   
+    /**
+	 * @return the lastName
+	 */
+    @Column(name = "lastName")
+    public String getLastName() {
+    	return lastName;
+    }
+    
+    /**
+	 * @param lastName the lastName to set
+	 */
+    public void setLastName(String lastName) {
+    	this.lastName = lastName;
+    }
 	
 	/**
 	 * @return the role
@@ -118,21 +131,6 @@ public class Employee {
 		this.country = country;
 	}
 
-
-	/**
-	 * @return the id
-	 */
-	public EmployeeId getId() {
-		return id;
-	}
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(EmployeeId id) {
-		this.id = id;
-	}
 
 	
 	

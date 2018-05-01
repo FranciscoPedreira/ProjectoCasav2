@@ -15,6 +15,7 @@ import pt.francisco.hibernate.util.HibernateUtil;
 
 public class SalaryDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
+	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private String step;
@@ -78,6 +79,20 @@ public class SalaryDeleteAction extends ActionSupport implements ServletRequestA
 		this.value = value;
 	}
 
+	/**
+	 * @return the employeeId
+	 */
+	public int getEmployeeId() {
+		return employeeId;
+	}
+
+	/**
+	 * @param employeeId the employeeId to set
+	 */
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
+	}
+	
 	public void setServletRequest(HttpServletRequest request){
     	this.request = request;
     }
@@ -102,9 +117,9 @@ public class SalaryDeleteAction extends ActionSupport implements ServletRequestA
 		session.beginTransaction();
 		
 		//deletion of object from the database in hibernate
-		Salary.SalaryId sIdAux = new Salary.SalaryId((String) request.getAttribute("firstName"), (String) request.getAttribute("lastName"));
-		Salary s = session.load(Salary.class, sIdAux);
-		System.out.println("Deleting Salary Registry of Employee: " + (String) request.getAttribute("firstName") + " " + (String) request.getAttribute("lastName"));
+		//we get the id from a hidden field in the form so hibernate knows which employee to delete
+		Salary s = session.load(Salary.class, (int) request.getAttribute("employeeId"));
+		System.out.println("Deleting Salary Registry of Employee with Id: "+ (int) request.getAttribute("employeeId") + " -  " + (String) request.getAttribute("firstName") + " - " + (String) request.getAttribute("lastName"));
 		session.delete(s);
 		
 		session.getTransaction().commit();

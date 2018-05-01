@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Company Salary List</title>
-<link rel="stylesheet" type="text/css" href="<s:url value='css/style.css' />">
+<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css' />">
 </head>
 <body>
 
@@ -20,53 +20,34 @@
 	<br/>
 	<br/>
 	
+	<table>
+		<tr>
+			<td><strong><label for="firstName">First Name </label></strong></td>
+			<td><strong><label for="lastName">Last Name </label></strong></td>
+			<td><strong><label for="step">Step </label></strong></td>
+			<td><strong><label for="value">Value </label></strong></td>
+		</tr>
+	</table>
+	
 	<c:forEach items="${listSalary}" var="s"> 
 	
 		<form action="SalaryViewAction" method="post">
+		
 			<table>
 				<tr>
-					<td>
-						<label for="firstName">First name: </label>
-						<input type='text' name='firstName' disabled value='${s.getId().getFirstName()}'>
-					</td>
-					<td><input type='hidden' name='firstName' value='${s.getId().getFirstName()}'>
-					</td>
+					<td><input type='hidden' name='firstName' value='${e.getFirstName()}'></td>
+					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
+					<td><input type='hidden' name='lastName' value='${e.getLastName()}'></td>
 				</tr>
 				<tr>
-					<td>
-						<label for="lastName">Last name: </label>
-						<input type='text' name='lastName'  disabled value='${s.getId().getLastName()}'>
-					</td>
-					<td><input type='hidden' name='lastName' value='${s.getId().getLastName()}'></td>
-				</tr>
-				<tr>
-					<td>
-						<label for="step">step: </label>
-						<input type='text' name='step' value='${s.getStep()}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="value">Value: </label>
-						<input type='text' name='value' value='${s.getValue()}'>
-					</td>
+					<td><input type='text' name='firstName' disabled value='${s.getFirstName()}'></td>
+					<td><input type='text' name='lastName'  disabled value='${s.getLastName()}'></td>
+					<td><input type='text' name='step' value='${s.getStep()}'></td>
+					<td><input type='text' name='value' value='${s.getValue()}'></td>
+				    <td><s:submit theme="simple" action="SalaryDeleteAction" key="button.deleteSalary"/></td>
+				    <td><s:submit theme="simple" action="SalaryViewAction" key="button.updateSalary"/></td>
 				</tr>
 			</table>
-		 
-		 	<br/>
-		 
-		 	<table>
-		 		<tr>
-		 			<td id="labelSpace"></td>
-				    <td id="actionButton" >
-				        <s:submit theme="simple" action="SalaryDeleteAction" key="button.deleteSalary"/>
-				        <s:submit theme="simple" action="SalaryViewAction" key="button.updateSalary"/>
-				    </td>
-				 </tr>
-		 	</table>
-		    
-		 	<br />
-		 	<br />
 		 	
 	 	</form>
 	 	

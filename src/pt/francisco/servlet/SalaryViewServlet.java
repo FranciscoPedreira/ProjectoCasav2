@@ -63,7 +63,7 @@ public class SalaryViewServlet extends HttpServlet {
     	Query querySalary = sess.createQuery("from Salary");
         listSalary = (ArrayList<Salary>) querySalary.list();
         for(Salary s : listSalary) {
-        	System.out.println(s.getId().getFirstName() + " - " + s.getId().getLastName() + " - "
+        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
         	+ s.getStep() + " - " + s.getValue());
         }
         

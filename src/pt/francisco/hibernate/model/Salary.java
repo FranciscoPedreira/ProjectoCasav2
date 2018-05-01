@@ -11,6 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,6 +22,9 @@ import javax.persistence.Table;
 @Table(name = "salary")
 public class Salary {
 	
+	Integer employeeId;
+	String firstName;
+    String lastName;
 	String step;
 	String value;
 	
@@ -26,48 +32,52 @@ public class Salary {
 		
 	}
 	
-	@Embeddable
-	public static class SalaryId implements Serializable { 
-		
-		public static final long serialVersionUID = 6L;
-		 
-		public SalaryId(){}
-	    
-		//@ManyToOne
-		@JoinColumn(name = "firstname")
-		private String firstName;
+	/**
+	 * @return the employee_Id
+	 */
+	@Id
+	@Column(name = "employee_Id")
+	public Integer getEmployeeId() {
+		return employeeId;
+	}
 
-		//@ManyToOne
-	    @JoinColumn(name = "lastname")
-	    private String lastName;
-	    
-	    public SalaryId(String firstName, String lastName) {
-	    	this.firstName = firstName;
-	    	this.lastName = lastName;
-	    }
-	    
-	    public void setFirstName(String firstname) {
-	    	this.firstName = firstname;
-	    }
-	    
-	    public String getFirstName() {
-	    	return firstName;
-	    }
-	    
-	    public void setLastName(String lastName) {
-	    	this.lastName = lastName;
-	    }
-	    
-	    public String getLastName() {
-	    	return lastName;
-	    }
-	    
+	/**
+	 * @param employee_Id the employee_Id to set
+	 */
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 	
-	
-	@EmbeddedId
-	SalaryId id;
-	
+	/**
+	 * @return the firstName
+	 */
+	@Column(name = "firstName")
+	public String getFirstName() {
+    	return firstName;
+    }
+	 
+	/**
+	 * @param firstName the firstName to set
+	 */
+    public void setFirstName(String firstname) {
+    	this.firstName = firstname;
+    }
+    
+    /**
+	 * @return the lastName
+	 */
+    @Column(name = "lastName")
+    public String getLastName() {
+    	return lastName;
+    }
+    
+    /**
+	 * @param lastName the lastName to set
+	 */
+    public void setLastName(String lastName) {
+    	this.lastName = lastName;
+    }
+    
 	/**
 	 * @return the step
 	 */
@@ -96,22 +106,6 @@ public class Salary {
 	 */
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-
-	/**
-	 * @return the id
-	 */
-	public SalaryId getId() {
-		return id;
-	}
-
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(SalaryId id) {
-		this.id = id;
 	}
 	
 }

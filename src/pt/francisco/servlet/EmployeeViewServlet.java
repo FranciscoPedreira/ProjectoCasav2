@@ -62,7 +62,7 @@ public class EmployeeViewServlet extends HttpServlet {
     	Query queryEmployee = sess.createQuery("from Employee");
         listEmployee = (ArrayList<Employee>) queryEmployee.list();
         for(Employee e : listEmployee) {
-        	System.out.println(e.getId().getFirstName() + " - " + e.getId().getLastName() + " - "
+        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
         }
         

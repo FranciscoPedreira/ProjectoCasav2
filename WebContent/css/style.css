@@ -18,3 +18,12 @@ label {
 	vertical-align: center;
 	width: 50%;
 }
+
+form {
+	height: 25px !important;
+}
+
+label {
+	width: 173px;
+    text-align: left;
+}

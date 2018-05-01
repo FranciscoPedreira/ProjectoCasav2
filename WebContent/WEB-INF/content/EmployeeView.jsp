@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Employee List</title>
-<link rel="stylesheet" type="text/css" href="<s:url value='css/style.css' />">
+<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css'/>">
 </head>
 <body>
 	
@@ -20,59 +20,34 @@
 	<br/>
 	<br/>
 	
+	<table>
+		<tr>
+			<td id="labelTd"><strong><label for="firstName">First Name </label></strong></td>
+			<td id="labelTd"><strong><label for="lastName">Last Name </label></strong></td>
+			<td id="labelTd"><strong><label for="country">Country </label></strong></td>
+			<td id="labelTd"><strong><label for="address">Address </label></strong></td>
+			<td id="labelTd"><strong><label for="role">Role </label></strong></td>
+		</tr>
+	</table>
+	
 	<c:forEach items="${listEmployee}" var="e"> 
 	
 		<form action="EmployeeViewAction" method="post">
+		
 			<table>
 				<tr>
-					<td>
-						<label for="firstName">First name: </label>
-						<input type='text' name='firstName' disabled value='${e.getId().getFirstName()}'>
-					</td>
-					<td><input type='hidden' name='firstName' value='${e.getId().getFirstName()}'>
-					</td>
+					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
 				</tr>
 				<tr>
-					<td>
-						<label for="lastName">Last name: </label>
-						<input type='text' name='lastName'  disabled value='${e.getId().getLastName()}'>
-					</td>
-					<td><input type='hidden' name='lastName' value='${e.getId().getLastName()}'></td>
-				</tr>
-				<tr>
-					<td>
-						<label for="country">Country: </label>
-						<input type='text' name='country' value='${e.getCountry()}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address">Address: </label>
-						<input type='text' name='address' value='${e.getAddress()}'>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="role">Role: </label>
-						<input type='text' name='role' value='${e.getRole()}'>
-					</td>
+					<td><input type='text' name='firstName' value='${e.getFirstName()}'></td>
+					<td><input type='text' name='lastName' value='${e.getLastName()}'></td>
+					<td><input type='text' name='country' value='${e.getCountry()}'></td>
+					<td><input type='text' name='address' value='${e.getAddress()}'></td>
+					<td><input type='text' name='role' value='${e.getRole()}'></td>
+				    <td><s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/></td>
+				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>
 				</tr>
 			</table>
-		 
-		 	<br/>
-		 
-		 	<table>
-		 		<tr>
-		 			<td id="labelSpace"></td>
-				    <td id="employeeActionButton" >
-				        <s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
-				        <s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/>
-				    </td>
-				 </tr>
-		 	</table>
-		    
-		 	<br />
-		 	<br />
 		 	
 	 	</form>
 	 	
