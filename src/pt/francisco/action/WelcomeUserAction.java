@@ -1,6 +1,7 @@
 package pt.francisco.action;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -45,25 +48,34 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
  
         /*fetching objects from the database in hibernate*/
         
-        Query queryLoggedOnUser = sess.createQuery("from User where username = :username");
-        queryLoggedOnUser.setParameter("username", userName);
-        currentLoggedOnUser = (ArrayList<User>) queryLoggedOnUser.list();
+        /*Query queryLoggedOnUser = sess.createQuery("from User where username = :username");
+        queryLoggedOnUser.setParameter("username", userName);*/
+        
+        //use Criteria to fetch the logged on user and check if it exists in the DB 
+        Criteria cr = sess.createCriteria(User.class);
+        cr.add(Restrictions.eq("username", userName));
+        ArrayList<User> queryLoggedOnUser = (ArrayList<User>) cr.list();
+        currentLoggedOnUser = (ArrayList<User>) queryLoggedOnUser;
         for(User u : currentLoggedOnUser) {
-        	System.out.println(u.getUsername() + " - " + u.getPassword());
+        	System.out.println("Criteria: " + u.getUsername() + " - " + u.getPassword());
         }
         
         //set the currentLoggedOnUser variable in the session so it can be acessed in welcome-user.jsp
         HttpSession session = request.getSession();
         session.setAttribute("currentLoggedOnUser", currentLoggedOnUser);
         
-        Query queryUsers = sess.createQuery("from User");
-        listUsers = (ArrayList<User>) queryUsers.list();
+        /*Query queryUsers = sess.createQuery("from User");
+        listUsers = (ArrayList<User>) queryUsers.list();*/
+		
+        //native query in hibernate
+        Query queryUsers = sess.createNativeQuery("select * from user")
+		.addEntity(User.class);
+		ArrayList<User> listUsers = (ArrayList<User>) queryUsers.list();
         for(User u : listUsers) {
-        	System.out.println(u.getUsername() + " - " + u.getPassword());
+        	System.out.println("Native: " + u.getUsername() + " - " + u.getPassword());
         }
         
         //set the listUser variable in the session so it can be acessed in the UserManagementView
-        session = request.getSession();
         session.setAttribute("listUsers", listUsers);
         
      	System.out.println("########## EMPLOYEES ##########");
@@ -76,7 +88,6 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listEmployee variable in the session so it can be acessed in the EmployeeView
-        session = request.getSession();
         session.setAttribute("listEmployee", listEmployee);
         
         System.out.println("########## SALARY ##########");
@@ -89,7 +100,6 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listSalary variable in the session so it can be acessed in the SalaryView
-        session = request.getSession();
         session.setAttribute("listSalary", listSalary);
         
         
