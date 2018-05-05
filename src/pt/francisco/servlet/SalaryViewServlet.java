@@ -44,6 +44,23 @@ public class SalaryViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		final ArrayList<Salary> listSalary;
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sess = sf.openSession();
+        sess.beginTransaction();
+    	
+    	Query querySalary = sess.createQuery("from Salary");
+        listSalary = (ArrayList<Salary>) querySalary.list();
+        for(Salary s : listSalary) {
+        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
+        	+ s.getStep() + " - " + s.getValue());
+        }
+        
+        //set the listSalary variable with the updated query values (the user just created or updated a Salary)
+        //in the request so it can be acessed in the SalaryView
+        request.setAttribute("listSalary", listSalary);
+		
 		System.out.println("In doGet SalaryViewServlet");
         request.getRequestDispatcher("/WEB-INF/content/SalaryView.jsp").forward(request, response);
         
@@ -68,9 +85,8 @@ public class SalaryViewServlet extends HttpServlet {
         }
         
         //set the listSalary variable with the updated query values (the user just created or updated a Salary)
-        //in the session so it can be acessed in the SalaryView
-        HttpSession session = request.getSession();
-        session.setAttribute("listSalary", listSalary);
+        //in the request so it can be acessed in the SalaryView
+        request.setAttribute("listSalary", listSalary);
         
     	request.getRequestDispatcher("/WEB-INF/content/SalaryView.jsp").forward(request, response);
         

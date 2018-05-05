@@ -43,8 +43,25 @@ public class EmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In doGet EmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+		 final ArrayList<Employee> listEmployee;
+	        
+	        SessionFactory sf = HibernateUtil.getSessionFactory();
+	        Session sess = sf.openSession();
+	        sess.beginTransaction();
+	    	
+	    	Query queryEmployee = sess.createQuery("from Employee");
+	        listEmployee = (ArrayList<Employee>) queryEmployee.list();
+	        for(Employee e : listEmployee) {
+	        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
+	        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
+	        }
+	        
+	        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
+	        //in the request so it can be acessed in the EmployeeView
+	        request.setAttribute("listEmployee", listEmployee);
+	        
+	        System.out.println("In doGet EmployeeViewServlet");
+	        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         
     }
 
@@ -67,9 +84,8 @@ public class EmployeeViewServlet extends HttpServlet {
         }
         
         //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the session so it can be acessed in the EmployeeView
-        HttpSession session = request.getSession();
-        session.setAttribute("listEmployee", listEmployee);
+        //in the request so it can be acessed in the EmployeeView
+        request.setAttribute("listEmployee", listEmployee);
         
     	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
         

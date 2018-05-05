@@ -43,6 +43,22 @@ public class UserManagementViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		final ArrayList<User> listUsers;
+        
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session sess = sf.openSession();
+        sess.beginTransaction();
+    	
+    	Query queryUsers = sess.createQuery("from User");
+        listUsers = (ArrayList<User>) queryUsers.list();
+        for(User u : listUsers) {
+        	System.out.println(u.getUsername() + " - " + u.getPassword());
+        }
+        
+        //set the listUser variable with the updated query values (the admin just created or updated a user)
+        //in the request so it can be acessed in the UserManagementView
+        request.setAttribute("listUsers", listUsers);
+		
 		System.out.println("In doGet UserManagementViewServlet");
         request.getRequestDispatcher("/WEB-INF/content/UserManagementView.jsp").forward(request, response);
         
@@ -66,9 +82,8 @@ public class UserManagementViewServlet extends HttpServlet {
         }
         
         //set the listUser variable with the updated query values (the admin just created or updated a user)
-        //in the session so it can be acessed in the UserManagementView
-        HttpSession session = request.getSession();
-        session.setAttribute("listUsers", listUsers);
+        //in the request so it can be acessed in the UserManagementView
+        request.setAttribute("listUsers", listUsers);
         
     	request.getRequestDispatcher("/WEB-INF/content/UserManagementView.jsp").forward(request, response);
         

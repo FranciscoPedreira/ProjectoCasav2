@@ -61,8 +61,8 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the currentLoggedOnUser variable in the session so it can be acessed in welcome-user.jsp
-        HttpSession session = request.getSession();
-        session.setAttribute("currentLoggedOnUser", currentLoggedOnUser);
+        //HttpSession session = request.getSession();
+        request.setAttribute("currentLoggedOnUser", currentLoggedOnUser);
         
         /*Query queryUsers = sess.createQuery("from User");
         listUsers = (ArrayList<User>) queryUsers.list();*/
@@ -76,7 +76,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listUser variable in the session so it can be acessed in the UserManagementView
-        session.setAttribute("listUsers", listUsers);
+        request.setAttribute("listUsers", listUsers);
         
      	System.out.println("########## EMPLOYEES ##########");
         
@@ -88,7 +88,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listEmployee variable in the session so it can be acessed in the EmployeeView
-        session.setAttribute("listEmployee", listEmployee);
+        request.setAttribute("listEmployee", listEmployee);
         
         System.out.println("########## SALARY ##########");
         
@@ -100,7 +100,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         }
         
         //set the listSalary variable in the session so it can be acessed in the SalaryView
-        session.setAttribute("listSalary", listSalary);
+        request.setAttribute("listSalary", listSalary);
         
         
         System.out.println("End of welcome user action");

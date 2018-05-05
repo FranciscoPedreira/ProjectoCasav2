@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Company Salary List</title>
-<link rel="stylesheet" type="text/css" href="<s:url value='css/style.css' />">
+<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css'/>">
 </head>
 <body>
 
@@ -20,40 +20,27 @@
 	<br/>
 	<br/>
 	
+	<table>
+		<tr>
+			<td id="labelTd"><strong><label for="username">Username: </label></strong></td>
+			<td id="labelTd"><strong><label for="password">Password: </label></strong></td>
+		</tr>
+	</table>
+	
 	<c:forEach items="${listUsers}" var="u"> 
 	
 		<form action="UserManagementViewAction" method="post">
 			<table>
 				<tr>
-					<td>
-						<label for="username">Username: </label>
-						<input type='text' name='username' disabled value='${u.getUsername()}'>
-					</td>
-					<td><input type='hidden' name='username' value='${u.getUsername()}'>
-					</td>
+					<td><input type='hidden' name='username' value='${u.getUsername()}'></td>
 				</tr>
 				<tr>
-					<td>
-						<label for="password">Password: </label>
-						<input type='password' name='password' value='${u.getPassword()}'>
-					</td>
+					<td><input type='text' name='username' disabled value='${u.getUsername()}'></td>
+					<td><input type='password' name='password' value='${u.getPassword()}'></td>
+					<td><s:submit theme="simple" action="UserManagementDeleteAction" key="button.deleteUser"/></td>
+					<td><s:submit theme="simple" action="UserManagementViewAction" key="button.updateUser"/></td>
 				</tr>
 			</table>
-		 
-		 	<br/>
-		 
-		 	<table>
-		 		<tr>
-		 			<td id="labelSpace"></td>
-				    <td id="actionButton" >
-				        <s:submit theme="simple" action="UserManagementDeleteAction" key="button.deleteUser"/>
-				        <s:submit theme="simple" action="UserManagementViewAction" key="button.updateUser"/>
-				    </td>
-				 </tr>
-		 	</table>
-		    
-		 	<br />
-		 	<br />
 		 	
 	 	</form>
 	 	
