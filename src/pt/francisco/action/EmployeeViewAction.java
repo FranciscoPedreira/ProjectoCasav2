@@ -12,7 +12,7 @@ import org.hibernate.Session;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 public class EmployeeViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	

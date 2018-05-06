@@ -7,6 +7,9 @@
 <title>Action Error</title>
 </head>
 <body>
+	
+	<jsp:include page="/WEB-INF/content/Menu.jsp" />
+
 	<h1>SOMETHING WENT WRONG!</h1>
 </body>
 </html>

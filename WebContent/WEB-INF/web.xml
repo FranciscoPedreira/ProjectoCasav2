@@ -73,14 +73,24 @@ version="3.0">
         <url-pattern>/content/UserManagementView.jsp</url-pattern>
     </servlet-mapping>
     
-      <servlet>
-        <servlet-name>createUserViewServlet</servlet-name>
-        <servlet-class>pt.francisco.servlet.CreateUserViewServlet</servlet-class>
+    <servlet>
+      <servlet-name>createUserViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.CreateUserViewServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>createUserViewServlet</servlet-name>
         <url-pattern>/content/CreateUserView.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+      <servlet-name>welcomeUserServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.WelcomeUserServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>welcomeUserServlet</servlet-name>
+        <url-pattern>/content/welcome-user.jsp</url-pattern>
     </servlet-mapping>
     
     

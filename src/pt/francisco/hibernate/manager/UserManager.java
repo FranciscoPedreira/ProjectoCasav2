@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import pt.francisco.hibernate.model.User;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 import java.util.ArrayList;
 import org.hibernate.Session;

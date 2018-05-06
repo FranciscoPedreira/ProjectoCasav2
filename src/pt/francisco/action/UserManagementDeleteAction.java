@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.model.User;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 public class UserManagementDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 

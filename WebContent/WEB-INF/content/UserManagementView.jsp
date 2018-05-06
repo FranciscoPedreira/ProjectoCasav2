@@ -12,6 +12,8 @@
 </head>
 <body>
 
+	<jsp:include page="/WEB-INF/content/Menu.jsp" />
+
 	<h1>User Management</h1>
 	
 	<c:url var="createUserUrl" context="/ProjectoCasa" scope="request" value="/content/CreateUserView.jsp"/>

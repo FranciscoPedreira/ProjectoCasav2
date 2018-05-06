@@ -8,9 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Company Salary List</title>
-<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css' />">
+<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css'/>">
 </head>
 <body>
+
+	<jsp:include page="/WEB-INF/content/Menu.jsp" />
 
 	<h1>Company Salary List</h1>
 	

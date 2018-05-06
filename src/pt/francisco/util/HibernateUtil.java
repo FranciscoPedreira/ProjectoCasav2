@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pt.francisco.hibernate.util;
+package pt.francisco.util;
 
 import org.hibernate.Session;
 

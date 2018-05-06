@@ -12,10 +12,17 @@
 </head>
 <body>
 	
+	<jsp:include page="/WEB-INF/content/Menu.jsp" />
+	
 	<h1>Employee List</h1>
+	
+	<s:submit id="createEmployee" type="button" value="Create New Employee" onclick="location.href='/ProjectoCasa/content/CreateEmployeeView.jsp';" /> 
 	
 	<c:url var="createEmployeeUrl" context="/ProjectoCasa" scope="request" value="/content/CreateEmployeeView.jsp"/>
 	<a href = "<c:out value="${createEmployeeUrl}"/>">Create new employee</a>
+	
+	
+	
 	
 	<br/>
 	<br/>

@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Salary;
 import pt.francisco.hibernate.model.User;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 //import pt.francisco.hibernate.model.Salary;
 //import pt.francisco.hibernate.util.HibernateUtil;
@@ -79,8 +79,10 @@ public class UserManagementViewAction extends ActionSupport implements ServletRe
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		//creation and persistence of objects to the database in hibernate
+		//call function to hash password introduced by the user
 		
+		
+		//creation and persistence of objects to the database in hibernate
 		System.out.println("Creating/Updating User: " + u.getUsername() + " - " + u.getPassword());
 		session.saveOrUpdate(u);
 		

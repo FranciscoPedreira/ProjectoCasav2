@@ -1,8 +1,10 @@
 package pt.francisco.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +22,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.model.Salary;
 import pt.francisco.hibernate.model.User;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 public class WelcomeUserAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
@@ -39,7 +41,13 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
 	public String execute() {
             
     	message = "Welcome " + userName;
-            
+        
+    	HttpSession httpSession = request.getSession();
+    	
+    	//set message and userName as attributes in the session so they can be accessed when using the menu links
+    	httpSession.setAttribute("message", message);
+    	httpSession.setAttribute("userName", userName);
+    	
 		System.out.println(userName + " - " + passWord);
 		
 		SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -102,6 +110,16 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         //set the listSalary variable in the session so it can be acessed in the SalaryView
         request.setAttribute("listSalary", listSalary);
         
+        
+        //set menu to use in the application
+        HashMap<String,String> menu = new HashMap<String,String>();
+        
+        menu.put("Employee List","/ProjectoCasa/content/EmployeeView.jsp");
+        menu.put("Company Salary List","/ProjectoCasa/content/SalaryView.jsp");
+        menu.put("User Management","/ProjectoCasa/content/UserManagementView.jsp");
+        
+        
+        httpSession.setAttribute("menu", menu);
         
         System.out.println("End of welcome user action");
         

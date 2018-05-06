@@ -6,21 +6,23 @@
 <%@ page import="org.hibernate.query.Query" %>
 <%@ page import="pt.francisco.hibernate.model.User" %>
 <%@ page import="pt.francisco.hibernate.model.Employee" %>
-<%@ page import="pt.francisco.hibernate.util.HibernateUtil" %>
+<%@ page import="pt.francisco.util.HibernateUtil" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="/struts-tags" prefix="s" %>
 
 <html>
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome User</title>
+		<link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css'/>">
 	</head>
 	
 	<body>
 	
-		<c:if test="${userName.equals(currentLoggedOnUser.get(0).getUsername()) && passWord.equals(currentLoggedOnUser.get(0).getPassword())}">
+		<%--<c:if test="${userName.equals(currentLoggedOnUser.get(0).getUsername()) && passWord.equals(currentLoggedOnUser.get(0).getPassword())}">--%>
 		
 			<% System.out.println("Rendering message..."); %>
 			
@@ -54,7 +56,7 @@
 				
 			</table>
 		
-		</c:if>
+		<%--</c:if>--%>
 
 	</body>
 	

@@ -27,3 +27,23 @@ label {
 	width: 173px;
     text-align: left;
 }
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	padding-left: 0;
+}
+
+ul li {
+  display: inline;
+  margin: 2px;
+  background-color: #eee;
+  padding: 1%;
+  text-decoration: none;
+}
+
+div {
+	text-align: left;
+}

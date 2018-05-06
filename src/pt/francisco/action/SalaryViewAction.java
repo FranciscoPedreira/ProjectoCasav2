@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.model.Salary;
-import pt.francisco.hibernate.util.HibernateUtil;
+import pt.francisco.util.HibernateUtil;
 
 //import pt.francisco.hibernate.model.Salary;
 //import pt.francisco.hibernate.util.HibernateUtil;
@@ -97,8 +97,8 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 	/**
 	 * @param employeeId the employeeId to set
 	 */
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = Integer.parseInt(employeeId);
 	}
 	
     public void setServletRequest(HttpServletRequest request){
