@@ -123,7 +123,11 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
         
     	Salary s = new Salary(); 
     	//still necessary to fetch the id from the request in case the salary is not in the DB we can choose between save() or saveOrUpdate()
-    	s.setEmployeeId((int) request.getAttribute("employeeId"));
+    	if(((String) request.getAttribute("employeeId")) == null) { //TODO: FIX
+    		s.setEmployeeId(0);
+    	} else {
+    		s.setEmployeeId(Integer.parseInt((String) request.getAttribute("employeeId")));
+    	}
     	s.setFirstName((String) request.getAttribute("firstName"));
     	s.setLastName((String) request.getAttribute("lastName"));
     	s.setStep((String) request.getAttribute("step"));
@@ -134,8 +138,7 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 		
 		//creation and persistence of objects to the database in hibernate
 		
-		System.out.println("Creating/Updating Salary Register from Employee: " + s.getEmployeeId() + " - " + s.getFirstName()
-				+ " - " + s.getLastName() + " - " + s.getStep() + " - " + s.getValue());
+		
 		//Query to get Id from Employee using firstname and lastname
 		
 		Session sess = HibernateUtil.getSessionFactory().openSession();
@@ -153,6 +156,9 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
         	s.setEmployeeId((int) e.getEmployeeId());
         	
         }
+        
+        System.out.println("Creating/Updating Salary Register from Employee: " + s.getEmployeeId() + " - " + s.getFirstName()
+		+ " - " + s.getLastName() + " - " + s.getStep() + " - " + s.getValue());
         
     	//if id = 0 then use save() since saveOrUpdate() is not able to determine if the entity is new or detached when id = 0
 		if((int) s.getEmployeeId() != 0) {

@@ -37,9 +37,9 @@
 		
 			<table>
 				<tr>
-					<td><input type='hidden' name='firstName' value='${e.getFirstName()}'></td>
-					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
-					<td><input type='hidden' name='lastName' value='${e.getLastName()}'></td>
+					<td><input type='hidden' name='firstName' value='${s.getFirstName()}'></td>
+					<td><input type='hidden' name='employeeId' value='${s.getEmployeeId()}'></td>
+					<td><input type='hidden' name='lastName' value='${s.getLastName()}'></td>
 				</tr>
 				<tr>
 					<td><input type='text' name='firstName' disabled value='${s.getFirstName()}'></td>

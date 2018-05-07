@@ -16,13 +16,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "salary")
-public class Salary {
+public class Salary implements Serializable{
 	
-	Integer employeeId;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8888721290651895730L;
+	
+	int employeeId;
 	String firstName;
     String lastName;
 	String step;
@@ -37,14 +43,14 @@ public class Salary {
 	 */
 	@Id
 	@Column(name = "employee_Id")
-	public Integer getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
 	/**
 	 * @param employee_Id the employee_Id to set
 	 */
-	public void setEmployeeId(Integer employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 	
