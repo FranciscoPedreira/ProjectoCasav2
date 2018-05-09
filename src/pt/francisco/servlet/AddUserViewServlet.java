@@ -35,16 +35,16 @@ import pt.francisco.util.HibernateUtil;
  *
  */
 
-public class CreateSalaryViewServlet extends HttpServlet {
+public class AddUserViewServlet extends HttpServlet {
 
-	public static final long serialVersionUID = 10L;
+	public static final long serialVersionUID = 2L;
 	
 	//Preprocess the request: since we don't want to do anything when the request comes in we just forward the client to the jsp
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In doGet CreateSalaryViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/CreateSalaryView.jsp").forward(request, response);
+		System.out.println("In doGet AddUserViewServlet");
+        request.getRequestDispatcher("/WEB-INF/content/AddUserView.jsp").forward(request, response);
         
     }
 	

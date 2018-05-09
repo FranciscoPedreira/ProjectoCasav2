@@ -74,13 +74,13 @@ version="3.0">
     </servlet-mapping>
     
     <servlet>
-      <servlet-name>createUserViewServlet</servlet-name>
-      <servlet-class>pt.francisco.servlet.CreateUserViewServlet</servlet-class>
+      <servlet-name>addUserViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.AddUserViewServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>createUserViewServlet</servlet-name>
-        <url-pattern>/content/CreateUserView.jsp</url-pattern>
+        <servlet-name>addUserViewServlet</servlet-name>
+        <url-pattern>/content/AddUserView.jsp</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -91,6 +91,26 @@ version="3.0">
     <servlet-mapping>
         <servlet-name>welcomeUserServlet</servlet-name>
         <url-pattern>/content/welcome-user.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+      <servlet-name>errorServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.ErrorServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>errorServlet</servlet-name>
+        <url-pattern>/content/Error.jsp</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+      <servlet-name>editUserViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.EditUserViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>editUserViewServlet</servlet-name>
+        <url-pattern>/content/EditUserView.jsp</url-pattern>
     </servlet-mapping>
     
     

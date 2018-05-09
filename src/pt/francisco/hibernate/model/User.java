@@ -10,6 +10,8 @@ package pt.francisco.hibernate.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,6 +19,7 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 
+	Integer userId;
 	String username;
 	String password;
 	
@@ -30,9 +33,25 @@ public class User {
 	}
 	
 	/**
-	 * @return the username
+	 * @return the userId
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "userId")
+	public Integer getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	/**
+	 * @return the username
+	 */
     @Column(name = "username")
     public String getUsername() {
         return username;

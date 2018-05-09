@@ -8,6 +8,9 @@
         <title>Hello World</title>
     </head>
     <body>
+    
+    	<h1>Login</h1>
+    
         <s:form action="welcomeUserAction">
             <s:textfield name="userName" label="User Name" />
             <s:password name="passWord" label="Password" />

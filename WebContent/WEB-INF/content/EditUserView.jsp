@@ -14,14 +14,19 @@
 	
 	<jsp:include page="/WEB-INF/content/Menu.jsp" />
 	
-	<h1>Create A New User</h1>
+	<h1>Edit User</h1>
 	
 		<form action="UserManagementViewAction" method="post">
 			<table>
 				<tr>
 					<td>
+						<input type='hidden' id='userId' name='userId' value=<c:out value="${param.userId}" />>
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<label for="username">Username: </label>
-						<input type='text' id='username' name='username'>
+						<input type='text' id='username' name='username' value=<c:out value="${param.username}" />>
 					</td>
 				</tr>
 				<tr>
@@ -30,12 +35,19 @@
 						<input type='password' id='password' name='password'>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<label for="passwordConfirm">Confirm Password: </label>
+						<input type='password' id='confirmPassword' name='confirmPassword'>
+					</td>
+				</tr>
 			</table>
 			
 			<br/>
 		 	
 		 	<div id="labelSpace"></div>
-		 	<input type="submit" id="createUserButton" name="updateUser" value="Create New User" />
+			<s:submit theme="simple" action="UserViewAction" key="button.updateUser"/>
+		    <s:submit theme="simple" action="UserDeleteAction" key="button.deleteUser"/>
 		    
 		 	<br />
 		 	<br />

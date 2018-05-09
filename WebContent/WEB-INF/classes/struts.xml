@@ -11,39 +11,39 @@
 		
 		<action name="welcomeUserAction" class="pt.francisco.action.WelcomeUserAction">
 			<result name="success">/WEB-INF/content/welcome-user.jsp</result>
-			<result name="error">/WEB-INF/content/ErrorTemplate.jsp</result>
+			<result name="error">/WEB-INF/content/Error.jsp</result>
 		</action>
 		
 		
 		<action name="EmployeeViewAction" class="pt.francisco.action.EmployeeViewAction">
 			<result name="success">/content/EmployeeView.jsp</result>
-			<result name="error">/content/ErrorTemplate.jsp</result>
+			<result name="error">/content/Error.jsp</result>
 		</action>
 		
 		<action name="EmployeeDeleteAction" class="pt.francisco.action.EmployeeDeleteAction"> 
     		<result name="success">/content/EmployeeView.jsp</result>
-    		<result name="error">/content/ErrorTemplate.jsp</result>
+    		<result name="error">/content/Error.jsp</result>
 		</action>
 		
 		
 		<action name="SalaryViewAction" class="pt.francisco.action.SalaryViewAction">
 			<result name="success">/content/SalaryView.jsp</result>
-			<result name="error">/content/ErrorTemplate.jsp</result>
+			<result name="error">/content/Error.jsp</result>
 		</action>
 		
 		<action name="SalaryDeleteAction" class="pt.francisco.action.SalaryDeleteAction"> 
     		<result name="success">/content/SalaryView.jsp</result>
-    		<result name="error">/content/ErrorTemplate.jsp</result>
+    		<result name="error">/content/Error.jsp</result>
 		</action>
 		
-		<action name="UserManagementViewAction" class="pt.francisco.action.UserManagementViewAction">
+		<action name="UserViewAction" class="pt.francisco.action.UserViewAction">
 			<result name="success">/content/UserManagementView.jsp</result>
-			<result name="error">/content/ErrorTemplate.jsp</result>
+			<result name="error">/content/Error.jsp</result>
 		</action>
 		
-		<action name="UserManagementDeleteAction" class="pt.francisco.action.UserManagementDeleteAction"> 
+		<action name="UserDeleteAction" class="pt.francisco.action.UserDeleteAction"> 
     		<result name="success">/content/UserManagementView.jsp</result>
-    		<result name="error">/content/ErrorTemplate.jsp</result>
+    		<result name="error">/content/Error.jsp</result>
 		</action>
 		
 	</package>

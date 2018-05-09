@@ -16,16 +16,18 @@
 
 	<h1>User Management</h1>
 	
-	<c:url var="createUserUrl" context="/ProjectoCasa" scope="request" value="/content/CreateUserView.jsp"/>
-	<a href = "<c:out value="${createUserUrl}"/>">Create new user</a>
+	<%--<c:url var="createUserUrl" context="/ProjectoCasa" scope="request" value="/content/AddUserView.jsp"/>
+	<a href = "<c:out value="${createUserUrl}"/>">Add new user</a>--%>
+	
+	<s:submit id="addUser" type="button" value="Add new user" onclick="location.href='/ProjectoCasa/content/AddUserView.jsp';" /> 
 	
 	<br/>
 	<br/>
 	
 	<table>
 		<tr>
-			<td id="labelTd"><strong><label for="username">Username: </label></strong></td>
-			<td id="labelTd"><strong><label for="password">Password: </label></strong></td>
+			<%-- <td id="labelTd"><strong><label for="username">Username: </label></strong></td>
+			<td id="labelTd"><strong><label for="password">Password: </label></strong></td> --%>
 		</tr>
 	</table>
 	
@@ -35,12 +37,22 @@
 			<table>
 				<tr>
 					<td><input type='hidden' name='username' value='${u.getUsername()}'></td>
+					<td><input type='hidden' name='userId' value='${u.getUserId()}'></td>
 				</tr>
 				<tr>
-					<td><input type='text' name='username' disabled value='${u.getUsername()}'></td>
+				
+					<td>
+						<c:url var="editUserURL" context="/ProjectoCasa" scope="request" value="/content/EditUserView.jsp">
+							<c:param name = "username" value ='${u.getUsername()}'/>
+							<c:param name = "userId" value ='${u.getUserId()}'/>
+						</c:url>
+						<a href = "<c:out value="${editUserURL}"/>">${u.getUsername()}</a>
+					</td>
+					
+					<%-- <td><input type='text' name='username' disabled value='${u.getUsername()}'></td>
 					<td><input type='password' name='password' value='${u.getPassword()}'></td>
 					<td><s:submit theme="simple" action="UserManagementDeleteAction" key="button.deleteUser"/></td>
-					<td><s:submit theme="simple" action="UserManagementViewAction" key="button.updateUser"/></td>
+					<td><s:submit theme="simple" action="UserManagementViewAction" key="button.updateUser"/></td> --%>
 				</tr>
 			</table>
 		 	
