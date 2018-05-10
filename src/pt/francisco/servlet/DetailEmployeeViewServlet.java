@@ -35,16 +35,16 @@ import pt.francisco.util.HibernateUtil;
  *
  */
 
-public class EmployeeViewServlet extends HttpServlet {
+public class DetailEmployeeViewServlet extends HttpServlet {
 
-	public static final long serialVersionUID = 2L;
+	public static final long serialVersionUID = 30L;
 	
 	//Preprocess the request: since we don't want to do anything when the request comes in we just forward the client to the jsp
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		final ArrayList<Employee> listEmployee;
-	        
+        
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sess = sf.openSession();
         sess.beginTransaction();
@@ -59,35 +59,9 @@ public class EmployeeViewServlet extends HttpServlet {
         //set the listEmployee variable with the updated query values (the user just created or updated an employee)
         //in the request so it can be acessed in the EmployeeView
         request.setAttribute("listEmployee", listEmployee);
-        
-        System.out.println("In doGet EmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
-        
-    }
-
-	//Postprocess request: here we want to pass the employee list to the Employee.jsp so we can display it there
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        final ArrayList<Employee> listEmployee;
-        
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sess = sf.openSession();
-        sess.beginTransaction();
-    	
-    	System.out.println("In doPost EmployeeViewServlet");
-    	Query queryEmployee = sess.createQuery("from Employee");
-        listEmployee = (ArrayList<Employee>) queryEmployee.list();
-        for(Employee e : listEmployee) {
-        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
-        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getDepartment());
-        }
-        
-        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the request so it can be acessed in the EmployeeView
-        request.setAttribute("listEmployee", listEmployee);
-        
-    	request.getRequestDispatcher("/WEB-INF/content/EmployeeView.jsp").forward(request, response);
+		
+		System.out.println("In doGet DetailEmployeeViewServlet");
+        request.getRequestDispatcher("/WEB-INF/content/DetailEmployeeView.jsp").forward(request, response);
         
     }
 	

@@ -16,7 +16,7 @@
 	
 	<h1>Add New User</h1>
 	
-		<form action="UserManagementViewAction" method="post">
+		<form action="UserViewAction" method="post">
 			<table>
 				<tr>
 					<td>

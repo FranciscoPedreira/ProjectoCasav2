@@ -113,5 +113,14 @@ version="3.0">
         <url-pattern>/content/EditUserView.jsp</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+      <servlet-name>detailEmployeeViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.DetailEmployeeViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>detailEmployeeViewServlet</servlet-name>
+        <url-pattern>/content/DetailEmployeeView.jsp</url-pattern>
+    </servlet-mapping>
     
 </web-app>

@@ -16,24 +16,15 @@
 	
 	<h1>Employee List</h1>
 	
-	<s:submit id="createEmployee" type="button" value="Create New Employee" onclick="location.href='/ProjectoCasa/content/CreateEmployeeView.jsp';" /> 
-	
-	<c:url var="createEmployeeUrl" context="/ProjectoCasa" scope="request" value="/content/CreateEmployeeView.jsp"/>
-	<a href = "<c:out value="${createEmployeeUrl}"/>">Create new employee</a>
-	
-	
-	
+	<s:submit id="createEmployee" type="button" value="Create New Employee" onclick="location.href='/ProjectoCasa/content/CreateEmployeeView.jsp';" />
 	
 	<br/>
 	<br/>
 	
 	<table>
 		<tr>
-			<td id="labelTd"><strong><label for="firstName">First Name </label></strong></td>
-			<td id="labelTd"><strong><label for="lastName">Last Name </label></strong></td>
-			<td id="labelTd"><strong><label for="country">Country </label></strong></td>
-			<td id="labelTd"><strong><label for="address">Address </label></strong></td>
-			<td id="labelTd"><strong><label for="role">Role </label></strong></td>
+			<td id="labelTd"><strong><label for="Department">Department</label></strong></td>
+			<td id="labelTd"><strong><label for="Name">Name</label></strong></td>
 		</tr>
 	</table>
 	
@@ -46,17 +37,17 @@
 					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
 				</tr>
 				<tr>
-					<td><input type='text' name='firstName' value='${e.getFirstName()}'></td>
-					<td><input type='text' name='lastName' value='${e.getLastName()}'></td>
-					<td><input type='text' name='country' value='${e.getCountry()}'></td>
-					<td><input type='text' name='address' value='${e.getAddress()}'></td>
-					<td><input type='text' name='role' value='${e.getRole()}'></td>
-				    <td><s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/></td>
-				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>
+					<td><input type='text' name='Department' value='${e.getDepartment()}'></td>
+					<td><input type='text' name='Name' value='${e.getFirstName()} ${e.getLastName()}'></td>
+					
+				    <%--<td><s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/></td>
+				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>--%>
 				</tr>
 			</table>
 		 	
 	 	</form>
+	 	
+	 	<s:submit id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> 
 	 	
 	</c:forEach>
 	

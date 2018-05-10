@@ -47,7 +47,7 @@
 		 	
 		 	<div id="labelSpace"></div>
 			<s:submit theme="simple" action="UserViewAction" key="button.updateUser"/>
-		    <s:submit theme="simple" action="UserDeleteAction" key="button.deleteUser"/>
+		    <s:submit theme="simple" id="userDeleteButton" action="UserDeleteAction" key="button.deleteUser"/>
 		    
 		 	<br />
 		 	<br />

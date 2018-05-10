@@ -44,8 +44,8 @@
 				</tr>
 				<tr>
 					<td>
-						<label for="role">Role: </label>
-						<input type='text' id='role' name='role'>
+						<label for="department">department: </label>
+						<input type='text' id='department' name='department'>
 					</td>
 				</tr>
 			</table>

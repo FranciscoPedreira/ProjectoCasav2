@@ -20,7 +20,7 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 	private String lastName;
 	private String address;
 	private String country;
-	private String role;
+	private String department;
     private HttpServletRequest request;
     private HttpServletResponse response;
 	
@@ -81,17 +81,17 @@ public class EmployeeDeleteAction extends ActionSupport implements ServletReques
 	}
 
 	/**
-	 * @return the role
+	 * @return the department
 	 */
-	public String getRole() {
-		return role;
+	public String getDepartment() {
+		return department;
 	}
 
 	/**
-	 * @param role the role to set
+	 * @param department the department to set
 	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	/**

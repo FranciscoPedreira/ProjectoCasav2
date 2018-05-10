@@ -23,7 +23,7 @@ public class Employee {
 	Integer employeeId;
     String firstName;
     String lastName;
-	String role;
+	String department;
 	String address;
 	String country;
 	
@@ -82,19 +82,19 @@ public class Employee {
     }
 	
 	/**
-	 * @return the role
+	 * @return the department
 	 */
-	@Column(name = "role")
-	public String getRole() {
-		return role;
+	@Column(name = "department")
+	public String getDepartment() {
+		return department;
 	}
 
 
 	/**
-	 * @param role the role to set
+	 * @param department the department to set
 	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 

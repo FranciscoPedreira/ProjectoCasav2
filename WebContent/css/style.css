@@ -4,17 +4,17 @@ label {
 	text-align: right;
 }
 
-#labelSpace{	
+#labelSpace {	
 	/*display: inline-block;*/
 	width: 100px;
 }
 
-#createEmployeeButton{
+#createEmployeeButton {
 	display: inline-block;
 	align: right;
 }
 
-#actionButton{
+#actionButton {
 	vertical-align: center;
 	width: 50%;
 }
@@ -45,5 +45,11 @@ ul li {
 }
 
 div {
+	display: inline-block;
 	text-align: left;
+}
+
+#userDeleteButton {
+	background-color: red;
+	color: white;
 }

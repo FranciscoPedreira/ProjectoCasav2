@@ -68,6 +68,10 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         	System.out.println("Criteria: " + u.getUsername() + " - " + u.getPassword());
         }
         
+        if(currentLoggedOnUser.isEmpty()) {
+        	return "error";
+        }
+        
         //set the currentLoggedOnUser variable in the session so it can be acessed in welcome-user.jsp
         //HttpSession session = request.getSession();
         request.setAttribute("currentLoggedOnUser", currentLoggedOnUser);
@@ -92,7 +96,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         listEmployee = (ArrayList<Employee>) queryEmployee.list();
         for(Employee e : listEmployee) {
         	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
-        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getRole());
+        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getDepartment());
         }
         
         //set the listEmployee variable in the session so it can be acessed in the EmployeeView

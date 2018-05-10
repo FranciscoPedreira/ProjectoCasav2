@@ -22,7 +22,7 @@
 	
 	<body>
 	
-		<%--<c:if test="${userName.equals(currentLoggedOnUser.get(0).getUsername()) && passWord.equals(currentLoggedOnUser.get(0).getPassword())}">--%>
+		<c:if test="${userName.equals(currentLoggedOnUser.get(0).getUsername()) && passWord.equals(currentLoggedOnUser.get(0).getPassword())}">
 		
 			<% System.out.println("Rendering message..."); %>
 			
@@ -56,7 +56,7 @@
 				
 			</table>
 		
-		<%--</c:if>--%>
+		</c:if>
 
 	</body>
 	

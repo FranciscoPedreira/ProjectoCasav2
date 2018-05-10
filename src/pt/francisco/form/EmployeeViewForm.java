@@ -10,7 +10,7 @@ public class EmployeeViewForm extends ActionSupport {
 	private String lastName;
 	private String country;
 	private String address; 
-	private String role;
+	private String department;
 	
 	/**
 	 * @return the firstName
@@ -69,17 +69,17 @@ public class EmployeeViewForm extends ActionSupport {
 	}
 	
 	/**
-	 * @return the role
+	 * @return the department
 	 */
-	public String getRole() {
-		return role;
+	public String getDepartment() {
+		return department;
 	}
 	
 	/**
-	 * @param role the role to set
+	 * @param department the department to set
 	 */
-	public void setRole(String role) {
-		this.role = role;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 }
