@@ -43,25 +43,8 @@ public class DetailEmployeeViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		final ArrayList<Employee> listEmployee;
-        
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session sess = sf.openSession();
-        sess.beginTransaction();
-    	
-    	Query queryEmployee = sess.createQuery("from Employee");
-        listEmployee = (ArrayList<Employee>) queryEmployee.list();
-        for(Employee e : listEmployee) {
-        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
-        	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getDepartment());
-        }
-        
-        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the request so it can be acessed in the EmployeeView
-        request.setAttribute("listEmployee", listEmployee);
-		
 		System.out.println("In doGet DetailEmployeeViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/DetailEmployeeView.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/content/DetailEmployeeView.jsp").forward(request, response);
         
     }
 	

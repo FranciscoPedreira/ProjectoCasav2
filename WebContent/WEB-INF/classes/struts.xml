@@ -46,5 +46,10 @@
     		<result name="error">/content/Error.jsp</result>
 		</action>
 		
+		<action name="DetailEmployeeViewAction" class="pt.francisco.action.DetailEmployeeViewAction">
+			<result name="success">/content/DetailEmployeeView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
 	</package>
 </struts>

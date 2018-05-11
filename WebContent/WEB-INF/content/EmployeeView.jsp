@@ -30,7 +30,7 @@
 	
 	<c:forEach items="${listEmployee}" var="e"> 
 	
-		<form action="EmployeeViewAction" method="post">
+		<form action="DetailEmployeeViewAction" method="get">
 		
 			<table>
 				<tr>
@@ -44,10 +44,12 @@
 				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>--%>
 				</tr>
 			</table>
+			
+			<s:submit id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> 
 		 	
 	 	</form>
 	 	
-	 	<s:submit id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> 
+	 	
 	 	
 	</c:forEach>
 	

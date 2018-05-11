@@ -16,39 +16,26 @@
 	
 	<h1>Edit Employee</h1>
 	
-	<br/>
-	<br/>
-	
-	<table>
-		<tr>
-			<td id="labelTd"><strong><label for="employeeId">Employee Id </label></strong></td>
-			<td id="labelTd"><strong><label for="firstName">First Name </label></strong></td>
-            <td id="labelTd"><strong><label for="lastName">Last Name </label></strong></td>
-            <td id="labelTd"><strong><label for="salaryGroup">Last Name </label></strong></td>
-		</tr>
-	</table>
-	
-	<c:forEach items="${listEmployee}" var="e"> 
-	
 		<form action="EmployeeViewAction" method="post">
 		
 			<table>
 				<tr>
 					<td>
-						<label for="employeeId">First name: </label>
-						<input type='text' id='employeeId' name='employeeId'>
+						<label for="employeeId">EmployeeId: </label>
+						<input type='text' id='employeeId' name='employeeId' disabled value=<c:out value='${employeeId}'/>>
+						<input type='hidden' id='employeeId' name='employeeId'>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label for="firstName">First name: </label>
-						<input type='text' id='firstName' name='firstName'>
+						<input type='text' id='firstName' name='firstName' value=<c:out value='${firstName}'/>>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<label for="lastName">Last name: </label>
-						<input type='text' id='lastName' name='lastName'>
+						<input type='text' id='lastName' name='lastName' value=<c:out value='${lastName}'/>>
 					</td>
 				</tr>
 				<tr>
@@ -58,22 +45,9 @@
 					</td>
 				</tr>
 			
-				<%--<tr>
-					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
-				</tr>
-				<tr>
-					<td><input type='text' name='Department' value='${e.getDepartment()}'></td>
-					<td><input type='text' name='Name' value='${e.getFirstName()} ${e.getLastName()}'></td>
-					<s:submit id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> 
-					
-				    <td><s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/></td>
-				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>
-				</tr>--%>
 			</table>
 		 	
 	 	</form>
-	 	
-	</c:forEach>
 	
 </body>
 </html>

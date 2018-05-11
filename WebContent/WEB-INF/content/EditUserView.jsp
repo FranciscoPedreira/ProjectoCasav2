@@ -20,7 +20,7 @@
 			<table>
 				<tr>
 					<td>
-						<input type='hidden' id='userId' name='userId' value=<c:out value="${param.userId}" />>
+						<input type='hidden' id='userId' name='userId' value="${employeeId}">
 					</td>
 				</tr>
 				<tr>
