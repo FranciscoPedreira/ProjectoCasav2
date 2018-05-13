@@ -28,10 +28,8 @@ public class Salary implements Serializable{
 	 */
 	private static final long serialVersionUID = 8888721290651895730L;
 	
-	int employeeId;
-	String firstName;
-    String lastName;
-	String step;
+	int salaryId;
+	String salaryGroup;
 	String value;
 	
 	public Salary() {
@@ -42,61 +40,31 @@ public class Salary implements Serializable{
 	 * @return the employee_Id
 	 */
 	@Id
-	@Column(name = "employee_Id")
-	public int getEmployeeId() {
-		return employeeId;
+	@Column(name = "salaryId")
+	public int getSalaryId() {
+		return salaryId;
 	}
 
 	/**
 	 * @param employee_Id the employee_Id to set
 	 */
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setSalaryId(int salaryId) {
+		this.salaryId = salaryId;
 	}
 	
 	/**
-	 * @return the firstName
+	 * @return the salaryGroup
 	 */
-	@Column(name = "firstName")
-	public String getFirstName() {
-    	return firstName;
-    }
-	 
-	/**
-	 * @param firstName the firstName to set
-	 */
-    public void setFirstName(String firstname) {
-    	this.firstName = firstname;
-    }
-    
-    /**
-	 * @return the lastName
-	 */
-    @Column(name = "lastName")
-    public String getLastName() {
-    	return lastName;
-    }
-    
-    /**
-	 * @param lastName the lastName to set
-	 */
-    public void setLastName(String lastName) {
-    	this.lastName = lastName;
-    }
-    
-	/**
-	 * @return the step
-	 */
-	@Column(name = "step")
-	public String getStep() {
-		return step;
+	@Column(name = "salaryGroup")
+	public String getSalaryGroup() {
+		return salaryGroup;
 	}
 
 	/**
-	 * @param step the step to set
+	 * @param salaryGroup the salaryGroup to set
 	 */
-	public void setStep(String step) {
-		this.step = step;
+	public void setSalaryGroup(String salaryGroup) {
+		this.salaryGroup = salaryGroup;
 	}
 
 	/**

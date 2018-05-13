@@ -1,36 +1,30 @@
 package pt.francisco.action;
 
-import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
-//import org.hibernate.Session;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
-import pt.francisco.hibernate.model.Salary;
 import pt.francisco.util.HibernateUtil;
 
-//import pt.francisco.hibernate.model.Salary;
-//import pt.francisco.hibernate.util.HibernateUtil;
-
-public class SalaryViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
+public class DetailEmployeeSaveAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 	
 	private int employeeId;
 	private String firstName;
 	private String lastName;
-	private String step;
-	private String value;
+	private String address;
+	private String country;
+	private String department;
     private HttpServletRequest request;
     private HttpServletResponse response;
-	private ArrayList<Employee> listEmployee;
-    
+	
 	/**
 	 * @return the firstName
 	 */
@@ -60,31 +54,45 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 	}
 
 	/**
-	 * @return the step
+	 * @return the address
 	 */
-	public String getStep() {
-		return step;
+	public String getAddress() {
+		return address;
 	}
 
 	/**
-	 * @param step the step to set
+	 * @param address the address to set
 	 */
-	public void setStep(String step) {
-		this.step = step;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	/**
-	 * @return the value
+	 * @return the country
 	 */
-	public String getValue() {
-		return value;
+	public String getCountry() {
+		return country;
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param country the country to set
 	 */
-	public void setValue(String value) {
-		this.value = value;
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	/**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	
 	/**
@@ -97,8 +105,8 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
 	/**
 	 * @param employeeId the employeeId to set
 	 */
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = Integer.parseInt(employeeId);
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 	
     public void setServletRequest(HttpServletRequest request){
@@ -117,32 +125,30 @@ public class SalaryViewAction extends ActionSupport implements ServletRequestAwa
     	return response;
     }
 
+	
+
 	public static final long serialVersionUID = 4L;
 
     public String execute() {
         
-    	Salary s = new Salary(); 
-    	//still necessary to fetch the id from the request in case the salary is not in the DB we can choose between save() or saveOrUpdate()
-    	if(((String) request.getAttribute("salaryId")) == null) { //TODO: FIX
-    		s.setSalaryId(0);
-    	} else {
-    		s.setSalaryId(Integer.parseInt((String) request.getAttribute("salaryId")));
-    	}
-    	s.setSalaryGroup((String) request.getAttribute("salaryGroup"));
-    	s.setValue((String) request.getAttribute("value"));
+    	Employee e = new Employee();
+    	//we get the id from a hidden field in the form, if the id exists we pass it and hibernate knows it has to update
+    	//otherwise the variable will be received as NULL and therefore hibernate knows it has to create a new record
+    	e.setEmployeeId((int) request.getAttribute("employeeId"));
+    	e.setFirstName((String) request.getAttribute("firstName"));
+    	e.setLastName((String) request.getAttribute("lastName"));
+    	e.setDepartment((String) request.getAttribute("department"));
     	
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		//creation and persistence of objects to the database in hibernate
-        
-        System.out.println("Creating/Updating Salary with id: " + s.getSalaryId());
-        
-    	//if id = 0 then use save() since saveOrUpdate() is not able to determine if the entity is new or detached when id = 0
-		if((int) s.getSalaryId() != 0) {
-			session.saveOrUpdate(s);
+		System.out.println("Creating/Updating Employee with Id: " + e.getEmployeeId() + " - " + e.getFirstName());
+		//if id = 0 then use save() since saveOrUpdate() is not able to determine if the entity is new or detached when id = 0
+		if(e.getEmployeeId() != 0) {
+			session.saveOrUpdate(e);
 		} else {
-			session.save(s);
+			session.save(e);
 		}
 		
 		session.getTransaction().commit();

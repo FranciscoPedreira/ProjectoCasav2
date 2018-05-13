@@ -15,6 +15,7 @@ import org.hibernate.query.Query;
 import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
+import pt.francisco.hibernate.model.EmployeeSalary;
 import pt.francisco.util.HibernateUtil;
 
 public class DetailEmployeeViewAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
@@ -103,23 +104,39 @@ public class DetailEmployeeViewAction extends ActionSupport implements ServletRe
     public String execute() {
         
     	final ArrayList<Employee> currentEmployee;
+    	final ArrayList<String> currentEmployeeSalary;
         
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session sess = sf.openSession();
         sess.beginTransaction();
         
+        Integer employeeId = (Integer) request.getAttribute("employeeId");
+        
+        //get employee details
     	Query queryEmployee = sess.createQuery("from Employee where employeeId = :employeeId");
-    	queryEmployee.setParameter("employeeId", (Integer) request.getAttribute("employeeId"));
+    	queryEmployee.setParameter("employeeId", employeeId);
         currentEmployee = (ArrayList<Employee>) queryEmployee.list();
         for(Employee e : currentEmployee) {
         	System.out.println(e.getEmployeeId() + " - " + e.getFirstName() + " - " + e.getLastName() + " - "
         	+ e.getCountry() + " - " + e.getAddress() + " - " + e.getDepartment());
         }
         
-        //set the listEmployee variable with the updated query values (the user just created or updated an employee)
-        //in the request so it can be acessed in the EmployeeView
+        //get employee's salary group
+        Query querySalary = sess.createNativeQuery("select s.salaryGroup from Salary s inner join EmployeeSalary es on s.salaryId = es.salaryId"
+        		+ " where es.employeeId = :employeeId");
+        querySalary.setParameter("employeeId", employeeId);
+        currentEmployeeSalary = (ArrayList<String>) querySalary.list();
+        for(String salGroup : currentEmployeeSalary) {
+        	System.out.println(salGroup);
+        	salaryGroup = salGroup;
+        }
+        
+        
+        //set variables to be used in the view
         request.setAttribute("firstName", currentEmployee.get(0).getFirstName());
         request.setAttribute("lastName", currentEmployee.get(0).getLastName());
+        request.setAttribute("department", currentEmployee.get(0).getDepartment());
+        request.setAttribute("salaryGroup", salaryGroup);
 		
         return SUCCESS;
         

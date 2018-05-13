@@ -45,8 +45,8 @@ ul li {
 }
 
 div {
-	display: inline-block;
-	text-align: left;
+	/*display: inline-block;
+	text-align: left;*/
 }
 
 #userDeleteButton {

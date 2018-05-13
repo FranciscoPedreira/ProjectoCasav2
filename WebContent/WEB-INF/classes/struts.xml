@@ -51,5 +51,10 @@
 			<result name="error">/content/Error.jsp</result>
 		</action>
 		
+		<action name="DetailEmployeeSaveAction" class="pt.francisco.action.DetailEmployeeSaveAction">
+			<result name="success">/content/EmployeeView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
 	</package>
 </struts>

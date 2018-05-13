@@ -53,8 +53,7 @@ public class SalaryViewServlet extends HttpServlet {
     	Query querySalary = sess.createQuery("from Salary");
         listSalary = (ArrayList<Salary>) querySalary.list();
         for(Salary s : listSalary) {
-        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
-        	+ s.getStep() + " - " + s.getValue());
+        	System.out.println(s.getSalaryId() + " - " + s.getSalaryGroup() + " - " + s.getValue());
         }
         
         //set the listSalary variable with the updated query values (the user just created or updated a Salary)
@@ -80,8 +79,7 @@ public class SalaryViewServlet extends HttpServlet {
     	Query querySalary = sess.createQuery("from Salary");
         listSalary = (ArrayList<Salary>) querySalary.list();
         for(Salary s : listSalary) {
-        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
-        	+ s.getStep() + " - " + s.getValue());
+        	System.out.println(s.getSalaryId() + " - " + s.getSalaryGroup() + " - " + s.getValue());
         }
         
         //set the listSalary variable with the updated query values (the user just created or updated a Salary)

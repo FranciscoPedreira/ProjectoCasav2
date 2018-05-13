@@ -107,8 +107,7 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
    	    Query querySalary = sess.createQuery("from Salary");
         listSalary = (ArrayList<Salary>) querySalary.list();
         for(Salary s : listSalary) {
-        	System.out.println(s.getEmployeeId() + " - " + s.getFirstName() + " - " + s.getLastName() + " - "
-        	+ s.getStep() + " - " + s.getValue());
+        	System.out.println(s.getSalaryId() + " - " + s.getSalaryGroup() + " - " + s.getValue());
         }
         
         //set the listSalary variable in the session so it can be acessed in the SalaryView

@@ -16,14 +16,14 @@
 	
 	<h1>Edit Employee</h1>
 	
-		<form action="EmployeeViewAction" method="post">
+		<form action="DetailEmployeeSaveAction" method="get">
 		
 			<table>
 				<tr>
 					<td>
 						<label for="employeeId">EmployeeId: </label>
 						<input type='text' id='employeeId' name='employeeId' disabled value=<c:out value='${employeeId}'/>>
-						<input type='hidden' id='employeeId' name='employeeId'>
+						<input type='hidden' id='employeeId' name='employeeId' value=<c:out value='${employeeId}'/>>
 					</td>
 				</tr>
 				<tr>
@@ -40,10 +40,18 @@
 				</tr>
 				<tr>
 					<td>
-						<label for="salaryGroup">Salary Group: </label>
-						<input type='text' id='salaryGroup' name='salaryGroup'>
+						<label for="department">Department: </label>
+						<input type='text' id='department' name='department' value=<c:out value='${department}'/>>
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<label for="salaryGroup">Salary Group: </label>
+						<c:out value='${salaryGroup}'/>
+					</td>
+				</tr>
+				
+				<s:submit id="updateDetailEmployee" type="button" value="Update"/>
 			
 			</table>
 		 	

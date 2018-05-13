@@ -24,9 +24,6 @@
 	
 	<table>
 		<tr>
-			<td><strong><label for="firstName">First Name </label></strong></td>
-			<td><strong><label for="lastName">Last Name </label></strong></td>
-			<td><strong><label for="step">Step </label></strong></td>
 			<td><strong><label for="value">Value </label></strong></td>
 		</tr>
 	</table>
@@ -37,14 +34,10 @@
 		
 			<table>
 				<tr>
-					<td><input type='hidden' name='firstName' value='${s.getFirstName()}'></td>
-					<td><input type='hidden' name='employeeId' value='${s.getEmployeeId()}'></td>
-					<td><input type='hidden' name='lastName' value='${s.getLastName()}'></td>
+					<td><input type='hidden' name='salaryId' value='${s.getSalaryId()}'></td>
 				</tr>
 				<tr>
-					<td><input type='text' name='firstName' disabled value='${s.getFirstName()}'></td>
-					<td><input type='text' name='lastName'  disabled value='${s.getLastName()}'></td>
-					<td><input type='text' name='step' value='${s.getStep()}'></td>
+					<td><input type='text' name='salaryGroup' value='${s.getSalaryGroup()}'></td>
 					<td><input type='text' name='value' value='${s.getValue()}'></td>
 				    <td><s:submit theme="simple" action="SalaryDeleteAction" key="button.deleteSalary"/></td>
 				    <td><s:submit theme="simple" action="SalaryViewAction" key="button.updateSalary"/></td>
