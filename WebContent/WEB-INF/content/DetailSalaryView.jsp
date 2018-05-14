@@ -14,9 +14,11 @@
 	
 	<jsp:include page="/WEB-INF/content/Menu.jsp" />
 	
-	<h1>Create A New Salary Record</h1>
+	<h1>Edit Salary</h1>
 	
-		<form action="SalaryViewAction" method="post">
+		<form action="DetailSalarySaveAction" method="post">
+		
+			<s:submit theme="simple" id="deleteEmployee" action="SalaryDeleteAction" key="button.deleteSalary"/>
 		
 			<table>
 				<tr>
@@ -38,12 +40,18 @@
 			
 			<br/>
 		 	
-		    <s:submit theme="simple" action="SalaryViewAction" key="button.createSalary"/>
+		 	<s:submit theme="simple" action="DetailSalarySaveAction" key="button.updateSalary"/>
 		    
 		 	<br />
 		 	<br />
 		 	
 	 	</form>
+
+		<s:select label="Select Employee"
+		   name="employeesWithoutSalaryGroup"
+		   headerValue="Select Employee"
+		   list="employeesWithNoSalary"
+		/>
 
 </body>
 </html>

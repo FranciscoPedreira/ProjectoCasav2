@@ -39,13 +39,9 @@
 				<tr>
 					<td><input type='text' name='Department' value='${e.getDepartment()}'></td>
 					<td><input type='text' name='Name' value='${e.getFirstName()} ${e.getLastName()}'></td>
-					
-				    <%--<td><s:submit theme="simple" action="EmployeeDeleteAction" key="button.deleteEmployee"/></td>
-				    <td><s:submit theme="simple" action="EmployeeViewAction" key="button.updateEmployee"/></td>--%>
+					<td><s:submit theme="simple" id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> </td>
 				</tr>
 			</table>
-			
-			<s:submit id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> 
 		 	
 	 	</form>
 	 	

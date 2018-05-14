@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td>
-						<label for="department">department: </label>
+						<label for="department">Department: </label>
 						<input type='text' id='department' name='department'>
 					</td>
 				</tr>

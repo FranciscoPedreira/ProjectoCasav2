@@ -18,6 +18,8 @@
 	
 		<form action="DetailEmployeeSaveAction" method="get">
 		
+			<s:submit theme="simple" id="deleteEmployee" action="EmployeeDeleteAction" key="button.deleteEmployee"/>
+		
 			<table>
 				<tr>
 					<td>
@@ -47,7 +49,14 @@
 				<tr>
 					<td>
 						<label for="salaryGroup">Salary Group: </label>
-						<c:out value='${salaryGroup}'/>
+						<c:choose>
+							<c:when test='${not empty salaryGroup}'>
+								<c:out value='${salaryGroup}'/>
+							</c:when>
+							<c:otherwise>
+								<c:out value='No Group Associated'/>
+							</c:otherwise>
+						</c:choose>
 					</td>
 				</tr>
 				

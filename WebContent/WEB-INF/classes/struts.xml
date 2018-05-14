@@ -56,5 +56,15 @@
 			<result name="error">/content/Error.jsp</result>
 		</action>
 		
+		<action name="DetailSalaryViewAction" class="pt.francisco.action.DetailSalaryViewAction">
+			<result name="success">/content/DetailSalaryView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
+		<action name="DetailSalarySaveAction" class="pt.francisco.action.DetailSalarySaveAction">
+			<result name="success">/content/SalaryView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
 	</package>
 </struts>

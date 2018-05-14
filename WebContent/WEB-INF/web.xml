@@ -123,4 +123,14 @@ version="3.0">
         <url-pattern>/content/DetailEmployeeView.jsp</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+      <servlet-name>detailSalaryViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.DetailSalaryViewServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>detailSalaryViewServlet</servlet-name>
+        <url-pattern>/content/DetailSalaryView.jsp</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

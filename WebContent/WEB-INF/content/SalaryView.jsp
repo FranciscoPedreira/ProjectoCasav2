@@ -16,21 +16,21 @@
 
 	<h1>Company Salary List</h1>
 	
-	<c:url var="createSalaryUrl" context="/ProjectoCasa" scope="request" value="/content/CreateSalaryView.jsp"/>
-	<a href = "<c:out value="${createSalaryUrl}"/>">Create new salary record</a>
+	<s:submit id="createSalary" type="button" value="Create New Salary" onclick="location.href='/ProjectoCasa/content/CreateSalaryView.jsp';" />
 	
 	<br/>
 	<br/>
 	
 	<table>
 		<tr>
+			<td><strong><label for="slaryGroup">Salary Group </label></strong></td>
 			<td><strong><label for="value">Value </label></strong></td>
 		</tr>
 	</table>
 	
 	<c:forEach items="${listSalary}" var="s"> 
 	
-		<form action="SalaryViewAction" method="post">
+		<form action="DetailSalaryViewAction" method="get">
 		
 			<table>
 				<tr>
@@ -39,8 +39,7 @@
 				<tr>
 					<td><input type='text' name='salaryGroup' value='${s.getSalaryGroup()}'></td>
 					<td><input type='text' name='value' value='${s.getValue()}'></td>
-				    <td><s:submit theme="simple" action="SalaryDeleteAction" key="button.deleteSalary"/></td>
-				    <td><s:submit theme="simple" action="SalaryViewAction" key="button.updateSalary"/></td>
+				    <td><s:submit id="detailSalary" theme="simple" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailSalaryView.jsp';" /> </td>
 				</tr>
 			</table>
 		 	

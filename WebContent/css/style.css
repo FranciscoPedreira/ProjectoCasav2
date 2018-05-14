@@ -45,11 +45,17 @@ ul li {
 }
 
 div {
-	/*display: inline-block;
-	text-align: left;*/
+	display: inline-block;
+	text-align: left;
 }
 
 #userDeleteButton {
 	background-color: red;
 	color: white;
+}
+
+#deleteEmployee {
+	background-color: red;
+	color: white;
+	margin-left: 550px;
 }

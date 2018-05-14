@@ -15,54 +15,38 @@ import pt.francisco.util.HibernateUtil;
 
 public class SalaryDeleteAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
 
-	private int employeeId;
-	private String firstName;
-	private String lastName;
-	private String step;
+	private int salaryId;
+	private String salaryGroup;
 	private String value;
     private HttpServletRequest request;
     private HttpServletResponse response;
-	
+
 	/**
-	 * @return the firstName
+	 * @return the salaryId
 	 */
-	public String getFirstName() {
-		return firstName;
+	public int getSalaryId() {
+		return salaryId;
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @return the salaryGroup
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getSalaryGroup() {
+		return salaryGroup;
 	}
 
 	/**
-	 * @return the lastName
+	 * @param salaryId the salaryId to set
 	 */
-	public String getLastName() {
-		return lastName;
+	public void setSalaryId(int salaryId) {
+		this.salaryId = salaryId;
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param salaryGroup the salaryGroup to set
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-    /**
-	 * @return the step
-	 */
-	public String getStep() {
-		return step;
-	}
-
-	/**
-	 * @param step the step to set
-	 */
-	public void setStep(String step) {
-		this.step = step;
+	public void setSalaryGroup(String salaryGroup) {
+		this.salaryGroup = salaryGroup;
 	}
 
 	/**
@@ -77,20 +61,6 @@ public class SalaryDeleteAction extends ActionSupport implements ServletRequestA
 	 */
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	/**
-	 * @return the employeeId
-	 */
-	public int getEmployeeId() {
-		return employeeId;
-	}
-
-	/**
-	 * @param employeeId the employeeId to set
-	 */
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
 	}
 	
 	public void setServletRequest(HttpServletRequest request){
@@ -118,8 +88,8 @@ public class SalaryDeleteAction extends ActionSupport implements ServletRequestA
 		
 		//deletion of object from the database in hibernate
 		//we get the id from a hidden field in the form so hibernate knows which employee to delete
-		Salary s = session.load(Salary.class, (int) request.getAttribute("employeeId"));
-		System.out.println("Deleting Salary Registry of Employee with Id: "+ (int) request.getAttribute("employeeId") + " -  " + (String) request.getAttribute("firstName") + " - " + (String) request.getAttribute("lastName"));
+		Salary s = session.load(Salary.class, (int) request.getAttribute("salaryId"));
+		System.out.println("Deleting Salary with Id: " + (int) request.getAttribute("salaryId") + " -  " + (String) request.getAttribute("salaryGroup") + " - " + (String) request.getAttribute("value"));
 		session.delete(s);
 		
 		session.getTransaction().commit();
