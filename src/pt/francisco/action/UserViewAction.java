@@ -25,6 +25,7 @@ public class UserViewAction extends ActionSupport implements ServletRequestAware
 	private String confirmPassword;
     private HttpServletRequest request;
     private HttpServletResponse response;
+    private String isRegisterUser;
     
     /**
 	 * @return the userId
@@ -98,6 +99,20 @@ public class UserViewAction extends ActionSupport implements ServletRequestAware
     	return response;
     }
 
+	/**
+	 * @return the isRegisterUser
+	 */
+	public String getIsRegisterUser() {
+		return isRegisterUser;
+	}
+
+	/**
+	 * @param isRegisterUser the isRegisteUser to set
+	 */
+	public void setIsRegisterUser(String isRegisterUser) {
+		this.isRegisterUser = isRegisterUser;
+	}
+
 	public static final long serialVersionUID = 4L;
 
     public String execute() {
@@ -111,7 +126,7 @@ public class UserViewAction extends ActionSupport implements ServletRequestAware
     	if(password.equals(confirmPassword)) {
     		System.out.println("Passwords Match!");
     	} else {
-    		System.out.println("Password do not match. Type again.");
+    		System.out.println("Passwords do not match. Type again.");
     		return "error";
     	}
     	
@@ -134,7 +149,11 @@ public class UserViewAction extends ActionSupport implements ServletRequestAware
 		session.getTransaction().commit();
 		session.close();
     	
-		return SUCCESS;
+		if(request.getAttribute("isRegisterUser").equals("true")) {
+			return "goToLogin";
+		} else {
+			return SUCCESS;
+		}
         
     }
 	

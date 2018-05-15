@@ -37,6 +37,7 @@
 		</action>
 		
 		<action name="UserViewAction" class="pt.francisco.action.UserViewAction">
+			<result name="goToLogin">/index.jsp</result>
 			<result name="success">/content/UserManagementView.jsp</result>
 			<result name="error">/content/Error.jsp</result>
 		</action>

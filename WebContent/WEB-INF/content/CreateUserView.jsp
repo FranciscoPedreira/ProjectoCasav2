@@ -19,6 +19,9 @@
 		<form action="UserViewAction" method="post">
 			<table>
 				<tr>
+					<td><input type='hidden' name='isRegisterUser' value=<c:out value='${param.isRegisterUser}'/>></td>
+				</tr>
+				<tr>
 					<td>
 						<label for="username">Username: </label>
 						<input type='text' id='username' name='username'>
@@ -40,7 +43,6 @@
 			
 			<br/>
 		 	
-		 	<div id="labelSpace"></div>
 		 	<input type="submit" id="createUserButton" name="updateUser" value="Add" />
 		    
 		 	<br />

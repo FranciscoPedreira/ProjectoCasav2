@@ -74,13 +74,13 @@ version="3.0">
     </servlet-mapping>
     
     <servlet>
-      <servlet-name>addUserViewServlet</servlet-name>
-      <servlet-class>pt.francisco.servlet.AddUserViewServlet</servlet-class>
+      <servlet-name>createUserViewServlet</servlet-name>
+      <servlet-class>pt.francisco.servlet.CreateUserViewServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>addUserViewServlet</servlet-name>
-        <url-pattern>/content/AddUserView.jsp</url-pattern>
+        <servlet-name>createUserViewServlet</servlet-name>
+        <url-pattern>/content/CreateUserView.jsp</url-pattern>
     </servlet-mapping>
     
     <servlet>

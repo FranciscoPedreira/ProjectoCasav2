@@ -119,7 +119,10 @@ public class WelcomeUserAction extends ActionSupport implements ServletRequestAw
         
         menu.put("Employee List","/ProjectoCasa/content/EmployeeView.jsp");
         menu.put("Company Salary List","/ProjectoCasa/content/SalaryView.jsp");
-        menu.put("User Management","/ProjectoCasa/content/UserManagementView.jsp");
+        
+        if(userName.equals("admin")) {
+            menu.put("User Management","/ProjectoCasa/content/UserManagementView.jsp");
+        }
         
         
         httpSession.setAttribute("menu", menu);

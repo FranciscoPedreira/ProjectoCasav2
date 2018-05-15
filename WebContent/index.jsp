@@ -18,5 +18,9 @@
     			<s:text name="Login" />
 			</s:submit>
         </s:form>
+        <s:submit type="button" onclick="location.href='/ProjectoCasa/content/CreateUserView.jsp';" >
+			<s:text name="Register" />
+			<s:param name="isRegisterUser" value="true"></s:param>
+		</s:submit>
     </body>
 </html>

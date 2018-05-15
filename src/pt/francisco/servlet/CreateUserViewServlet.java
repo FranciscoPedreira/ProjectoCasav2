@@ -35,7 +35,7 @@ import pt.francisco.util.HibernateUtil;
  *
  */
 
-public class AddUserViewServlet extends HttpServlet {
+public class CreateUserViewServlet extends HttpServlet {
 
 	public static final long serialVersionUID = 2L;
 	
@@ -43,8 +43,8 @@ public class AddUserViewServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In doGet AddUserViewServlet");
-        request.getRequestDispatcher("/WEB-INF/content/AddUserView.jsp").forward(request, response);
+		System.out.println("In doGet CreateUserViewServlet");
+        request.getRequestDispatcher("/WEB-INF/content/CreateUserView.jsp").forward(request, response);
         
     }
 	
