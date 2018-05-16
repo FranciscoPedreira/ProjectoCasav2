@@ -20,7 +20,7 @@
 			<table>
 				<tr>
 					<td>
-						<input type='hidden' id='userId' name='userId' value="${employeeId}">
+						<input type='hidden' id='userId' name='userId' value="${param.userId}">
 					</td>
 				</tr>
 				<tr>
