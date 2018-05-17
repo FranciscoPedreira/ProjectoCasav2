@@ -37,8 +37,8 @@
 					<td><input type='hidden' name='salaryId' value='${s.getSalaryId()}'></td>
 				</tr>
 				<tr>
-					<td><input type='text' name='salaryGroup' value='${s.getSalaryGroup()}'></td>
-					<td><input type='text' name='value' value='${s.getValue()}'></td>
+					<td><input type='text' readonly name='salaryGroup' value='${s.getSalaryGroup()}'></td>
+					<td><input type='text' readonly name='value' value='${s.getValue()}'></td>
 				    <td><s:submit id="detailSalary" theme="simple" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailSalaryView.jsp';" /> </td>
 				</tr>
 			</table>

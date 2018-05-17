@@ -67,5 +67,10 @@
 			<result name="error">/content/Error.jsp</result>
 		</action>
 		
+		<action name="EmployeeSalarySaveAction" class="pt.francisco.action.EmployeeSalarySaveAction">
+			<result name="success">/content/DetailSalaryView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
 	</package>
 </struts>

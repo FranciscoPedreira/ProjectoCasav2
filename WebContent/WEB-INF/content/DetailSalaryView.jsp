@@ -47,11 +47,22 @@
 		 	
 	 	</form>
 
-		<s:select label="Select Employee"
-		   name="employeesWithoutSalaryGroup"
-		   headerValue="Select Employee"
-		   list="employeesWithNoSalary"
-		/>
+		<div id="selectEmployeeWithoutSalary">
+		
+			<form>
+				<s:select label="Select Employee"
+				   headerKey="-1"
+				   name="employeeWithoutSalaryGroup"
+				   headerValue="Select Employee"
+				   list="EmployeesWithoutSalaryList"
+				   value="defaultSearchEngine"
+				/>
+				<input type='hidden' name='salaryId' value='${salaryId}'>
+				<s:submit theme="simple" action="EmployeeSalarySaveAction" key="button.addEmployee"/>
+			</form>
+			
+		</div>
+		
 
 </body>
 </html>

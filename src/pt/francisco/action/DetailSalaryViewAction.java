@@ -2,6 +2,7 @@ package pt.francisco.action;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
 	private String value;
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private ArrayList<Employee> EmployeesWithoutSalaryList;
+    private List<Object[]> EmployeesWithoutSalaryList;
 	
 	/**
 	 * @return the salaryId
@@ -89,14 +90,14 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
 	/**
 	 * @return the employeesWithoutSalaryList
 	 */
-	public ArrayList<Employee> getEmployeesWithoutSalaryList() {
+	public List<Object[]> getEmployeesWithoutSalaryList() {
 		return EmployeesWithoutSalaryList;
 	}
 
 	/**
 	 * @param employeesWithoutSalaryList the employeesWithoutSalaryList to set
 	 */
-	public void setEmployeesWithoutSalaryList(ArrayList<Employee> employeesWithoutSalaryList) {
+	public void setEmployeesWithoutSalaryList(List<Object[]> employeesWithoutSalaryList) {
 		EmployeesWithoutSalaryList = employeesWithoutSalaryList;
 	}
 
@@ -120,20 +121,26 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         	System.out.println(s.getSalaryId() + " - " + s.getSalaryGroup() + " - " + s.getValue());
         }
         
-        Query queryEmployeesWithNoSalaryGroup = sess.createNativeQuery("select e.employeeId from Employee e " + 
+        Query queryEmployeesWithNoSalaryGroup = sess.createNativeQuery("select * from Employee e " + 
         		"        where not exists (" + 
-        		"        	select es.employeeId from EmployeeSalary es WHERE e.employeeId = es.employeeId " + 
+        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId " + 
         		"        );");
-        EmployeesWithoutSalaryList = (ArrayList<Employee>) queryEmployeesWithNoSalaryGroup.list();
-        /*for(Employee e : EmployeesWithoutSalaryList) {
-        	System.out.println(e.getEmployeeId() + " - " + e.getFirstName()+ " - " + e.getLastName());
-        }*/
+        ArrayList<Object[]> auxEmployeesWithoutSalary = (ArrayList<Object[]>) queryEmployeesWithNoSalaryGroup.list();
+        for(Object[] e : auxEmployeesWithoutSalary) {
+        	/*e[0] = e.getEmployeeId(); e[1] = e.getFirstName(); e[2] = e.getLastName()*/
+        	System.out.println("e -> " + " " + e[0]  + " - " + e[1]+ " - " + e[2]);
+        }
+        
+        EmployeesWithoutSalaryList = new ArrayList<Object[]>();
+        for (Object[] e : auxEmployeesWithoutSalary) {
+        	Object[] eName = new Object[] {e[0] + " - " + e[1] + " " + e[2]};
+        	EmployeesWithoutSalaryList.add(eName);
+        }
         
         //set variables to be used in the view
         request.setAttribute("salaryId", currentSalary.get(0).getSalaryId());
         request.setAttribute("salaryGroup", currentSalary.get(0).getSalaryGroup());
         request.setAttribute("value", currentSalary.get(0).getValue());
-        request.setAttribute("employeesWithNoSalary", EmployeesWithoutSalaryList);
 		
         return SUCCESS;
         

@@ -19,7 +19,7 @@
 		<form action="UserViewAction" method="post">
 			<table>
 				<tr>
-					<td><input type='hidden' name='isRegisterUser' value=<c:out value='${param.isRegisterUser}'/>></td>
+					<td><input type='hidden' name='isRegisterUser' value=<c:out value='${requestScope["isRegisterUser"]}'/>></td>
 				</tr>
 				<tr>
 					<td>

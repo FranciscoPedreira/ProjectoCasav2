@@ -51,8 +51,7 @@
 			</table>
 			
 			<br/>
-		 
-		 	<div id="labelSpace"></div>
+
 		 	<input type="submit" id="createEmployeeButton" name="updateEmployee" value="Create New Employee" />
 		    
 		 	<br />
