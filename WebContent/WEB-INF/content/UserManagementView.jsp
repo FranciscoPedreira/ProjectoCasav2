@@ -16,10 +16,10 @@
 
 	<h1>User Management</h1>
 	
-	<%--<c:url var="createUserUrl" context="/ProjectoCasa" scope="request" value="/content/AddUserView.jsp"/>
+	<%--<c:url var="createUserUrl" context="/ProjectoCasa" scope="request" value="/content/CreateUserView.jsp"/>
 	<a href = "<c:out value="${createUserUrl}"/>">Add new user</a>--%>
 	
-	<s:submit id="addUser" type="button" value="Add new user" onclick="location.href='/ProjectoCasa/content/AddUserView.jsp';" /> 
+	<s:submit id="addUser" type="button" value="Add new user" onclick="location.href='/ProjectoCasa/content/CreateUserView.jsp';" /> 
 	
 	<br/>
 	<br/>
@@ -46,7 +46,7 @@
 							<c:param name = "username" value ='${u.getUsername()}'/>
 							<c:param name = "userId" value ='${u.getUserId()}'/>
 						</c:url>
-						<a href = "<c:out value="${editUserURL}"/>">${u.getUsername()}</a>
+						<a href = "<c:out value="${editUserURL}"/>">${u.getUserId()} - ${u.getUsername()}</a>
 					</td>
 					
 					<%-- <td><input type='text' name='username' disabled value='${u.getUsername()}'></td>

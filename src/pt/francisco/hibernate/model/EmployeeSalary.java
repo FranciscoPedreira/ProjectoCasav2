@@ -40,6 +40,7 @@ public class EmployeeSalary implements Serializable{
 	 * @return the employeeSalaryId
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "employeeSalaryId")
 	public int getEmployeeSalaryId() {
 		return EmployeeSalaryId;

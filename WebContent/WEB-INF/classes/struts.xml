@@ -72,5 +72,17 @@
 			<result name="error">/content/Error.jsp</result>
 		</action>
 		
+		<action name="CreateUserViewAction" class="pt.francisco.action.CreateUserViewAction">
+			<result name="success">/content/CreateUserView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
+		<action name="EmployeeSalaryDeleteAction" class="pt.francisco.action.EmployeeSalaryDeleteAction">
+			<result name="success">/content/DetailSalaryView.jsp</result>
+			<result name="error">/content/Error.jsp</result>
+		</action>
+		
+		
+		
 	</package>
 </struts>

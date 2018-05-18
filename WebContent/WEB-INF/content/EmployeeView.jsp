@@ -37,8 +37,8 @@
 					<td><input type='hidden' name='employeeId' value='${e.getEmployeeId()}'></td>
 				</tr>
 				<tr>
-					<td><input type='text' readonly name='Department' value='${e.getDepartment()}'></td>
-					<td><input type='text' readonly name='Name' value='${e.getFirstName()} ${e.getLastName()}'></td>
+					<td id="labelTd"><c:out value='${e.getDepartment()}'/></td>
+					<td id="labelTd"><c:out value='${e.getEmployeeId()} - ${e.getFirstName()} ${e.getLastName()}'/></td>
 					<td><s:submit theme="simple" id="detailEmployee" type="button" value="Detail" onclick="location.href='/ProjectoCasa/content/DetailEmployeeView.jsp';" /> </td>
 				</tr>
 			</table>

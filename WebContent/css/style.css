@@ -23,7 +23,7 @@ form {
 	height: 25px !important;
 }
 
-label {
+label, #labelTd {
 	width: 173px;
     text-align: left;
 }
@@ -62,4 +62,13 @@ div {
 
 #selectEmployeeWithoutSalary {
 	margin-top: 150px;
+}
+
+#registerButton > a {
+	text-decoration: none; 
+	color: black;
+}
+
+#removeEmployeeFromGroup {
+	margin-left: 30px;
 }

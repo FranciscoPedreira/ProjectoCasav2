@@ -28,6 +28,7 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
     private HttpServletRequest request;
     private HttpServletResponse response;
     private List<Object[]> EmployeesWithoutSalaryList;
+    private List<Object[]> EmployeesWithSalaryList;
 	
 	/**
 	 * @return the salaryId
@@ -101,6 +102,20 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
 		EmployeesWithoutSalaryList = employeesWithoutSalaryList;
 	}
 
+	/**
+	 * @return the employeesWithSalaryList
+	 */
+	public List<Object[]> getEmployeesWithSalaryList() {
+		return EmployeesWithSalaryList;
+	}
+
+	/**
+	 * @param employeesWithSalaryList the employeesWithSalaryList to set
+	 */
+	public void setEmployeesWithSalaryList(List<Object[]> employeesWithSalaryList) {
+		EmployeesWithSalaryList = employeesWithSalaryList;
+	}
+
 	public static final long serialVersionUID = 4L;
 
     public String execute() {
@@ -111,7 +126,7 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         Session sess = sf.openSession();
         sess.beginTransaction();
         
-        Integer employeeId = (Integer) request.getAttribute("employeeId");
+        Integer salaryId = (Integer) request.getAttribute("salaryId");
         
         //get employee details
     	Query querySalary = sess.createQuery("from Salary where salaryId = :salaryId");
@@ -135,6 +150,22 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         for (Object[] e : auxEmployeesWithoutSalary) {
         	Object[] eName = new Object[] {e[0] + " - " + e[1] + " " + e[2]};
         	EmployeesWithoutSalaryList.add(eName);
+        }
+        
+        Query queryEmployeesWithSalaryGroup = sess.createNativeQuery("select * from Employee e " + 
+        		"        where exists (" + 
+        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId " + 
+        		"        );");
+        ArrayList<Object[]> auxEmployeesWithSalary = (ArrayList<Object[]>) queryEmployeesWithSalaryGroup.list();
+        for(Object[] e : auxEmployeesWithSalary) {
+        	/*e[0] = e.getEmployeeId(); e[1] = e.getFirstName(); e[2] = e.getLastName()*/
+        	System.out.println("e -> " + " " + e[0]  + " - " + e[1]+ " - " + e[2]);
+        }
+        
+        EmployeesWithSalaryList = new ArrayList<Object[]>();
+        for (Object[] e : auxEmployeesWithSalary) {
+        	Object[] eName = new Object[] {e[0] + " - " + e[1] + " " + e[2]};
+        	EmployeesWithSalaryList.add(eName);
         }
         
         //set variables to be used in the view

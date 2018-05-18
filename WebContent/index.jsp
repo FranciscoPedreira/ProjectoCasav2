@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="<s:url value='/css/style.css'/>">
     </head>
     <body>
     
@@ -14,17 +15,27 @@
         <s:form action="welcomeUserAction">
             <s:textfield name="userName" label="User Name" />
             <s:password name="passWord" label="Password" />
-            <s:submit type="button">
-    			<s:text name="Login" />
-			</s:submit>
+        	<table>
+        		<tr>
+        			<td>
+        				<s:submit theme="simple" id="registerButton" type="button" onclick="location.href='/ProjectoCasa/content/CreateUserView.jsp';" >
+						
+							<s:url action="CreateUserViewAction" var="isRegisterUserURL" >
+						        <s:param name="isRegisterUser">true</s:param>
+						    </s:url>
+						    <s:a href="%{isRegisterUserURL}">Register</s:a>
+							
+						</s:submit>
+	        			<s:submit theme="simple" type="button">
+			    			<s:text name="Login" />
+						</s:submit>
+        			</td>
+        		</tr>
+        	</table>    
+            
+        
         </s:form>
-        <s:submit type="button" onclick="location.href='/ProjectoCasa/content/CreateUserView.jsp';" >
-			<s:text name="Register" />
-			
-			<s:param name="isRegisterUser" > 
-				<s:property value="'true'" /> 
-			</s:param> 
-			
-		</s:submit>
+        
+		
     </body>
 </html>
