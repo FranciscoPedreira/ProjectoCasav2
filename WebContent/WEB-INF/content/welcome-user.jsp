@@ -57,6 +57,10 @@
 			</table>
 		
 		</c:if>
+		
+		<c:if test="${!userName.equals(currentLoggedOnUser.get(0).getUsername()) || !passWord.equals(currentLoggedOnUser.get(0).getPassword())}">
+			Wrong username or password!
+		</c:if>
 
 	</body>
 	

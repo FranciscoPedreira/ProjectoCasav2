@@ -49,6 +49,8 @@
 
 		<div id="selectEmployeeWithoutSalary">
 		
+		<h3>Add employee to Salary Group</h3>
+		
 			<form>
 				<s:select label="Select Employee"
 				   headerKey="-1"
@@ -61,27 +63,20 @@
 				<s:submit theme="simple" action="EmployeeSalarySaveAction" key="button.addEmployee"/>
 			</form>
 			
+			<h3>Employees in Salary Group</h3>
+			
 			<c:forEach items="${EmployeesWithSalaryList}" var="e">
 			
 				<table>
 					<tr>
-						<td><input type='hidden' name='username' value='${e[1]} ${e[2]}'></td>
-						<td><input type='hidden' name='userId' value='${e[0]}'></td>
-					</tr>
-					<tr>
-					
 						<td>
 							<s:form>
-								<input type="hidden" name="employeeIdToDelete" value="${e[0]}"/>
-								<c:out value="${e[0]} ${e[1]} ${e[2]}"/>
+								<input type='hidden' name='salaryId' value='${salaryId}'>
+								<input type="hidden" name="employeeToDelete" value="${e[0]}"/>
+								<c:out value="${e[0]}"/>
 								<s:submit id="removeEmployeeFromGroup" theme="simple" action="EmployeeSalaryDeleteAction" key="button.remove"/>
 							</s:form>
 						</td>
-						
-						<%-- <td><input type='text' name='username' disabled value='${u.getUsername()}'></td>
-						<td><input type='password' name='password' value='${u.getPassword()}'></td>
-						<td><s:submit theme="simple" action="UserManagementDeleteAction" key="button.deleteUser"/></td>
-						<td><s:submit theme="simple" action="UserManagementViewAction" key="button.updateUser"/></td> --%>
 					</tr>
 				</table>
 			

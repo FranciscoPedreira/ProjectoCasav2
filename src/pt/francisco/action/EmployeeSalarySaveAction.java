@@ -2,6 +2,7 @@ package pt.francisco.action;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import pt.francisco.hibernate.model.Employee;
 import pt.francisco.hibernate.model.EmployeeSalary;
+import pt.francisco.hibernate.model.Salary;
 import pt.francisco.util.HibernateUtil;
 
 public class EmployeeSalarySaveAction extends ActionSupport implements ServletRequestAware, ServletResponseAware {
@@ -24,6 +26,8 @@ public class EmployeeSalarySaveAction extends ActionSupport implements ServletRe
 	private int employeeId;
 	private int salaryId;
 	private String employeeWithoutSalaryGroup;
+	private List<Object[]> EmployeesWithoutSalaryList;
+    private List<Object[]> EmployeesWithSalaryList;
     private HttpServletRequest request;
     private HttpServletResponse response;
 	
@@ -99,9 +103,35 @@ public class EmployeeSalarySaveAction extends ActionSupport implements ServletRe
     	return response;
     }
 
-	
+	/**
+	 * @return the employeesWithoutSalaryList
+	 */
+	public List<Object[]> getEmployeesWithoutSalaryList() {
+		return EmployeesWithoutSalaryList;
+	}
 
-	public static final long serialVersionUID = 4L;
+	/**
+	 * @param employeesWithoutSalaryList the employeesWithoutSalaryList to set
+	 */
+	public void setEmployeesWithoutSalaryList(List<Object[]> employeesWithoutSalaryList) {
+		EmployeesWithoutSalaryList = employeesWithoutSalaryList;
+	}
+
+	/**
+	 * @return the employeesWithSalaryList
+	 */
+	public List<Object[]> getEmployeesWithSalaryList() {
+		return EmployeesWithSalaryList;
+	}
+
+	/**
+	 * @param employeesWithSalaryList the employeesWithSalaryList to set
+	 */
+	public void setEmployeesWithSalaryList(List<Object[]> employeesWithSalaryList) {
+		EmployeesWithSalaryList = employeesWithSalaryList;
+	}
+
+	public static final long serialVersionUID = 5678L;
 
     public String execute() {
     	
@@ -133,10 +163,52 @@ public class EmployeeSalarySaveAction extends ActionSupport implements ServletRe
 			} else {
 				session.save(es);
 			}
-			
+	    	
 			session.getTransaction().commit();
 			session.close();
-	    	
+			
+			//repopulate the lists after adding the employee
+			SessionFactory sf = HibernateUtil.getSessionFactory();
+	        Session sess = sf.openSession();
+	        sess.beginTransaction();
+	        
+	        Query queryEmployeesWithNoSalaryGroup = sess.createNativeQuery("select * from Employee e " + 
+	        		"        where not exists (" + 
+	        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId " + 
+	        		"        );");
+	        ArrayList<Object[]> auxEmployeesWithoutSalary = (ArrayList<Object[]>) queryEmployeesWithNoSalaryGroup.list();
+	        for(Object[] e : auxEmployeesWithoutSalary) {
+	        	/*e[0] = e.getEmployeeId(); e[1] = e.getFirstName(); e[2] = e.getLastName()*/
+	        	System.out.println("e -> " + " " + e[0]  + " - " + e[1]+ " - " + e[2]);
+	        }
+	        
+	        EmployeesWithoutSalaryList = new ArrayList<Object[]>();
+	        for (Object[] e : auxEmployeesWithoutSalary) {
+	        	Object[] eName = new Object[] {e[0] + " - " + e[1] + " " + e[2]};
+	        	EmployeesWithoutSalaryList.add(eName);
+	        }
+	        
+			
+			Query queryEmployeesWithSalaryGroup = sess.createNativeQuery("select * from Employee e " + 
+	        		"        where exists (" + 
+	        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId AND salaryId = :salaryId" + 
+	        		"        );");
+			queryEmployeesWithSalaryGroup.setParameter("salaryId", salaryId);
+	        ArrayList<Object[]> auxEmployeesWithSalary = (ArrayList<Object[]>) queryEmployeesWithSalaryGroup.list();
+	        for(Object[] e : auxEmployeesWithSalary) {
+	        	/*e[0] = e.getEmployeeId(); e[1] = e.getFirstName(); e[2] = e.getLastName()*/
+	        	System.out.println("e -> " + " " + e[0]  + " - " + e[1]+ " - " + e[2]);
+	        }
+	        
+	        EmployeesWithSalaryList = new ArrayList<Object[]>();
+	        for (Object[] e : auxEmployeesWithSalary) {
+	        	Object[] eName = new Object[] {e[0] + " - " + e[1] + " " + e[2]};
+	        	EmployeesWithSalaryList.add(eName);
+	        }
+	        
+	        sess.getTransaction().commit();
+			sess.close();
+			
 			return SUCCESS;
 			
     	}

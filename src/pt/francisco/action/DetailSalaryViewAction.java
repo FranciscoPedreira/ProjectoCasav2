@@ -128,7 +128,7 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         
         Integer salaryId = (Integer) request.getAttribute("salaryId");
         
-        //get employee details
+        //get salary details
     	Query querySalary = sess.createQuery("from Salary where salaryId = :salaryId");
     	querySalary.setParameter("salaryId", salaryId);
     	currentSalary = (ArrayList<Salary>) querySalary.list();
@@ -154,8 +154,9 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         
         Query queryEmployeesWithSalaryGroup = sess.createNativeQuery("select * from Employee e " + 
         		"        where exists (" + 
-        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId " + 
+        		"        	select * from EmployeeSalary es WHERE e.employeeId = es.employeeId AND salaryId = :salaryId" + 
         		"        );");
+        queryEmployeesWithSalaryGroup.setParameter("salaryId", salaryId);
         ArrayList<Object[]> auxEmployeesWithSalary = (ArrayList<Object[]>) queryEmployeesWithSalaryGroup.list();
         for(Object[] e : auxEmployeesWithSalary) {
         	/*e[0] = e.getEmployeeId(); e[1] = e.getFirstName(); e[2] = e.getLastName()*/
@@ -173,6 +174,9 @@ public class DetailSalaryViewAction extends ActionSupport implements ServletRequ
         request.setAttribute("salaryGroup", currentSalary.get(0).getSalaryGroup());
         request.setAttribute("value", currentSalary.get(0).getValue());
 		
+        sess.getTransaction().commit();
+		sess.close();
+        
         return SUCCESS;
         
     }

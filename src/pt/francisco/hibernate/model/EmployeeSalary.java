@@ -20,7 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "salary")
+@Table(name = "EmployeeSalary")
 public class EmployeeSalary implements Serializable{
 	
 	/**
