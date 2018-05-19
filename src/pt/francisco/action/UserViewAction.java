@@ -131,18 +131,29 @@ public class UserViewAction extends ActionSupport implements ServletRequestAware
     		return "error";
     	}
     	
-    	User u = new User();
-    	u.setUserId((Integer) request.getAttribute("userId"));
-    	u.setUsername((String) request.getAttribute("username"));
-    	u.setPassword((String) request.getAttribute("password"));
     	
-    	
+    
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		//creation and persistence of objects to the database in hibernate
-		System.out.println("Creating/Updating User: " + u.getUsername() + " - " + u.getPassword());
-		session.saveOrUpdate(u);
+		
+		
+		if(!((String) request.getAttribute("password")).isEmpty()) {
+			
+			User u = new User();
+	    	u.setUserId((Integer) request.getAttribute("userId"));
+	    	u.setUsername((String) request.getAttribute("username"));
+	    	u.setPassword((String) request.getAttribute("password"));
+			System.out.println("Creating/Updating User: " + u.getUsername() + " - " + u.getPassword());
+			session.saveOrUpdate(u);
+			
+		} else {
+			
+			User u = (User) session.get(User.class, (Integer) request.getAttribute("userId"));
+			u.setUsername((String) request.getAttribute("username"));
+			System.out.println("Creating/Updating User Just With Username: " + u.getUsername() + " - " + u.getPassword());
+			
+		}
 		
 		session.getTransaction().commit();
 		session.close();

@@ -24,6 +24,7 @@ public class DetailEmployeeViewAction extends ActionSupport implements ServletRe
 	private String firstName;
 	private String lastName;
 	private String salaryGroup;
+	private String department;
     private HttpServletRequest request;
     private HttpServletResponse response;
 	
@@ -83,7 +84,21 @@ public class DetailEmployeeViewAction extends ActionSupport implements ServletRe
 		this.salaryGroup = salaryGroup;
 	}
 	
-    public void setServletRequest(HttpServletRequest request){
+    /**
+	 * @return the department
+	 */
+	public String getDepartment() {
+		return department;
+	}
+
+	/**
+	 * @param department the department to set
+	 */
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public void setServletRequest(HttpServletRequest request){
     	this.request = request;
     }
 
@@ -130,7 +145,6 @@ public class DetailEmployeeViewAction extends ActionSupport implements ServletRe
         	System.out.println(salGroup);
         	salaryGroup = salGroup;
         }
-        
         
         //set variables to be used in the view
         request.setAttribute("firstName", currentEmployee.get(0).getFirstName());
